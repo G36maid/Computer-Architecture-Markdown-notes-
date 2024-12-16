@@ -1,5 +1,12 @@
 # Chapter 6
 
+- [Chapter 1](CA_ch1.md)
+- [Chapter 2](CA_ch2.md)
+- [Chapter 3](CA_ch3.md)
+- [Chapter 4](CA_ch4.md)
+- [Chapter 5](CA_ch5.md)
+- [Chapter 6](CA_ch6.md)
+
 # Parallel Processors from Client to Cloud
 
 # Introduction
