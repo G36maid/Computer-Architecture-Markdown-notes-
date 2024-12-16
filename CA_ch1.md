@@ -9,9 +9,9 @@
 
 # Computer Abstractions and Technology
 
-# The Computer Revolution
+### The Computer Revolution
 
-§1\.1 Introduction
+## §1\.1 Introduction
 
 
 
@@ -27,9 +27,9 @@
 * Computers are pervasive
 
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Classes of Computers
+
+### Classes of Computers
 
 
 
@@ -42,7 +42,7 @@ Chapter 1 — Computer Abstractions and Technology —
   * Range from small servers to building sized
 
 
-Chapter 1 — Computer Abstractions and Technology —
+
 
 
 
@@ -54,13 +54,13 @@ Chapter 1 — Computer Abstractions and Technology —
   * Stringent power/performance/cost  <span style="color:#c00000"> __constraints__ </span>
 
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# The PostPC Era
+
+### The PostPC Era
 
 ![](img/Chapter_01_0.png)
 
-Chapter 1 — Computer Abstractions and Technology —
+
 
 
 
@@ -76,9 +76,9 @@ Chapter 1 — Computer Abstractions and Technology —
   * <span style="color:#c00000"> __Amazon and Google__ </span>
 
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# What You Will Learn
+
+### What You Will Learn
 
 
 
@@ -91,9 +91,9 @@ Chapter 1 — Computer Abstractions and Technology —
 * What is  <span style="color:#c00000"> __parallel processing__ </span>
 
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Understanding Performance
+
+### Understanding Performance
 
 
 
@@ -107,9 +107,9 @@ Chapter 1 — Computer Abstractions and Technology —
   * Determines how fast I/O operations are executed
 
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Eight/Seven Great Ideas
+
+### Eight/Seven Great Ideas
 
 ![](img/Chapter_01_1.png)
 
@@ -131,7 +131,7 @@ _Dependability_   _via_  redundancy
 
 ![](img/Chapter_01_2.png)
 
-§1\.2 Eight Great Ideas in Computer Architecture
+## §1\.2 Eight Great Ideas in Computer Architecture
 
 ![](img/Chapter_01_3.png)
 
@@ -145,9 +145,9 @@ _Dependability_   _via_  redundancy
 
 ![](img/Chapter_01_8.png)
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Below Your Program
+
+### Below Your Program
 
 
 
@@ -163,13 +163,13 @@ Chapter 1 — Computer Abstractions and Technology —
   * Processor\, memory\, I/O controllers
 
 
-§1\.3 Below Your Program
+## §1\.3 Below Your Program
 
 ![](img/Chapter_01_9.png)
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Levels of Program Code
+
+### Levels of Program Code
 
 
 
@@ -185,11 +185,11 @@ Chapter 1 — Computer Abstractions and Technology —
 
 ![](img/Chapter_01_10.png)
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Components of a Computer
 
-§1\.4 Under the Covers
+### Components of a Computer
+
+## §1\.4 Under the Covers
 
 
 
@@ -206,9 +206,9 @@ Chapter 1 — Computer Abstractions and Technology —
 
 ![](img/Chapter_01_11.png)
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Touchscreen
+
+### Touchscreen
 
 
 
@@ -221,9 +221,9 @@ Chapter 1 — Computer Abstractions and Technology —
 
 ![](img/Chapter_01_12.jpg)
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Through the Looking Glass
+
+### Through the Looking Glass
 
 
 
@@ -233,9 +233,9 @@ Chapter 1 — Computer Abstractions and Technology —
 
 ![](img/Chapter_01_13.png)
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Opening the Box (A5)
+
+### Opening the Box (A5)
 
 ![](img/Chapter_01_14.png)
 
@@ -245,15 +245,15 @@ Capacitive multitouch LCD screen
 
 ![](img/Chapter_01_15.png)
 
-Chapter 1 — Computer Abstractions and Technology —
+
 
 ![](img/Chapter_01_16.jpg)
 
 ![](img/Chapter_01_17.jpg)
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Inside the Processor (CPU)
+
+### Inside the Processor (CPU)
 
 
 
@@ -263,21 +263,21 @@ Chapter 1 — Computer Abstractions and Technology —
   * Small fast SRAM memory for immediate access to data
 
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Inside the Processor
+
+### Inside the Processor
 
 Apple A5
 
 ![](img/Chapter_01_18.png)
 
-Chapter 1 — Computer Abstractions and Technology —
+
 
 ![](img/Chapter_01_19.jpg)
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Abstractions
+
+### Abstractions
 
 
 
@@ -291,9 +291,9 @@ Chapter 1 — Computer Abstractions and Technology —
   * The  <span style="color:#c00000"> __details__ </span>  underlying and interface
 
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# A Safe Place for Data
+
+### A Safe Place for Data
 
 
 
@@ -313,9 +313,9 @@ Chapter 1 — Computer Abstractions and Technology —
 
 ![](img/Chapter_01_23.jpg)
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Networks
+
+### Networks
 
 Communication\, resource sharing\, nonlocal access
 
@@ -329,9 +329,9 @@ Wireless network: WiFi\, Bluetooth
 
 ![](img/Chapter_01_25.jpg)
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Technology Trends
+
+### Technology Trends
 
 
 
@@ -342,7 +342,7 @@ Chapter 1 — Computer Abstractions and Technology —
 
 ![](img/Chapter_01_26.png)
 
-§1\.5 Technologies for Building Processors and Memory
+## §1\.5 Technologies for Building Processors and Memory
 
 | Year | Technology | Relative performance/cost |  |
 | :-: | :-: | :-: | :-: |
@@ -352,9 +352,9 @@ Chapter 1 — Computer Abstractions and Technology —
 | 1995 | Very large scale IC \(VLSI\) | 2\,400\,000 |  |
 | 2013 | Ultra large scale IC | 250\,000\,000\,000 |  |
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Semiconductor Technology
+
+### Semiconductor Technology
 
 
 
@@ -365,17 +365,17 @@ Chapter 1 — Computer Abstractions and Technology —
   * Switch
 
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Manufacturing ICs
+
+### Manufacturing ICs
 
 ![](img/Chapter_01_27.png)
 
 Yield: proportion of working dies per wafer
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Intel Core i7 Wafer
+
+### Intel Core i7 Wafer
 
 ![](img/Chapter_01_28.png)
 
@@ -383,9 +383,9 @@ Chapter 1 — Computer Abstractions and Technology —
 
 Each chip is 20\.7 x 10\.5 mm
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Intel® Core 10th Gen
+
+### Intel® Core 10th Gen
 
 ![](img/Chapter_01_29.jpg)
 
@@ -393,9 +393,9 @@ Chapter 1 — Computer Abstractions and Technology —
 
 Each chip is 11\.4 x 10\.7 mm
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Integrated Circuit Cost
+
+### Integrated Circuit Cost
 
 
 
@@ -405,13 +405,13 @@ Chapter 1 — Computer Abstractions and Technology —
   * Die area determined by architecture and circuit design
 
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Wafer-Scale Computer!!
+
+### Wafer-Scale Computer
 
 ![](img/Chapter_01_30.png)
 
-Chapter 1 — Computer Abstractions and Technology —
+
 
 ![](img/Chapter_01_31.png)
 
@@ -419,17 +419,17 @@ Chapter 1 — Computer Abstractions and Technology —
 
 https://www\.ithome\.com\.tw/news/132516
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Defining Performance (1/2)
 
-§1\.6 Performance
+### Defining Performance (1/2)
+
+## §1\.6 Performance
 
 Which airplane has the best performance?
 
-Chapter 1 — Computer Abstractions and Technology —
 
-§1\.6 Performance
+
+## §1\.6 Performance
 
 Which airplane has the best performance?
 
@@ -441,9 +441,9 @@ Which airplane has the best performance?
 
 ![](img/Chapter_01_36.png)
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Response Time and Throughput
+
+### Response Time and Throughput
 
 
 
@@ -458,9 +458,9 @@ Chapter 1 — Computer Abstractions and Technology —
 * We’ll focus on response time for now…
 
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Relative Performance
+
+### Relative Performance
 
 <span style="color:#c00000"> __Define Performance = 1/Execution Time__ </span>
 
@@ -474,9 +474,9 @@ Chapter 1 — Computer Abstractions and Technology —
   * So A is 1\.5 times faster than B
 
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Measuring Execution Time
+
+### Measuring Execution Time
 
 
 
@@ -491,23 +491,23 @@ Chapter 1 — Computer Abstractions and Technology —
   * Different programs are affected differently by CPU and system performance
 
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Performance Monitoring Tools
+
+### Performance Monitoring Tools
 
 ![](img/Chapter_01_37.png)
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Intel Vtune Performance Analyzer
+
+### Intel Vtune Performance Analyzer
 
 [https://software\.intel\.com/en\-us/videos/hpc\-applications\-need\-high\-performance\-analysis](https://software.intel.com/en-us/videos/hpc-applications-need-high-performance-analysis)
 
 ![](img/Chapter_01_38.png)
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# CPU Clocking
+
+### CPU Clocking
 
 Operation of digital hardware governed by a  <span style="color:#c00000"> __constant\-rate clock__ </span>
 
@@ -521,9 +521,9 @@ Data transferand computation
   * e\.g\.\, 4\.0GHz = 4000MHz = 4\.0×109Hz
 
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# CPU Time
+
+### CPU Time
 
 
 
@@ -533,9 +533,9 @@ Chapter 1 — Computer Abstractions and Technology —
   * Hardware designer must often trade off clock rate against cycle count
 
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# CPU Time Example
+
+### CPU Time Example
 
 
 
@@ -546,9 +546,9 @@ Chapter 1 — Computer Abstractions and Technology —
 * How fast must Computer B clock be?
 
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Instruction Count and CPI
+
+### Instruction Count and CPI
 
 
 
@@ -560,9 +560,9 @@ Chapter 1 — Computer Abstractions and Technology —
     * Average CPI affected by instruction mix
 
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# CPI Example
+
+### CPI Example
 
 Computer A: Cycle Time = 250ps\, CPI = 2\.0
 
@@ -572,9 +572,9 @@ Same ISA
 
 Which is faster\, and by how much?
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# CPI in More Details
+
+### CPI in More Details
 
 If different instruction classes take different numbers of cycles
 
@@ -582,9 +582,9 @@ Weighted average CPI
 
 Relative frequency
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# CPI Example
+
+### CPI Example
 
 Alternative compiled code sequences using instructions in classes A\, B\, C
 
@@ -604,9 +604,9 @@ Alternative compiled code sequences using instructions in classes A\, B\, C
   * Avg\. CPI = 9/6 = 1\.5
 
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Performance Summary
+
+### Performance Summary
 
 
 
@@ -617,33 +617,33 @@ Chapter 1 — Computer Abstractions and Technology —
   * Instruction set architecture: affects IC\, CPI\, Tc
 
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Power Trends (~2012)
 
-§1\.7 The Power Wall
+### Power Trends (~2012)
+
+## §1\.7 The Power Wall
 
 ![](img/Chapter_01_39.png)
 
 In CMOS IC technology
 
-Chapter 1 — Computer Abstractions and Technology —
 
-§1\.7 The Power Wall
+
+## §1\.7 The Power Wall
 
 In CMOS IC technology
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Power Trends (~2024)
+
+### Power Trends (~2024)
 
 ![](img/Chapter_01_41.jpg)
 
 ![](img/Chapter_01_42.jpg)
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Reducing Power
+
+### Reducing Power
 
 
 
@@ -656,19 +656,19 @@ Chapter 1 — Computer Abstractions and Technology —
 * How else can we improve performance?
 
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Uniprocessor Performance
+
+### Uniprocessor Performance
 
 ![](img/Chapter_01_43.png)
 
-§1\.8 The Sea Change: The Switch to Multiprocessors
+## §1\.8 The Sea Change: The Switch to Multiprocessors
 
 Constrained by power\, instruction\-level parallelism\, memory latency
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Multiprocessors
+
+### Multiprocessors
 
 
 
@@ -684,9 +684,9 @@ Chapter 1 — Computer Abstractions and Technology —
     * Optimizing communication and synchronization
 
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# SPEC CPU Benchmark
+
+### SPEC CPU Benchmark
 
 
 
@@ -702,21 +702,21 @@ Chapter 1 — Computer Abstractions and Technology —
     * CINT2006 \(integer\) and CFP2006 \(floating\-point\)
 
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# CINT2006 for Intel Core i7 920
+
+### CINT2006 for Intel Core i7 920
 
 ![](img/Chapter_01_44.png)
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# SPECspeed 2017 Integer benchmarks on a1.8 GHz Intel Xeon E5-2650L
+
+### SPECspeed 2017 Integer benchmarks on a1.8 GHz Intel Xeon E5-2650L
 
 ![](img/Chapter_01_45.png)
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# SPEC Power Benchmark
+
+### SPEC Power Benchmark
 
 
 
@@ -725,23 +725,23 @@ Chapter 1 — Computer Abstractions and Technology —
   * Power: Watts \(Joules/sec\)
 
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# SPECpower_ssj2008 for Xeon X5650
+
+### SPECpower_ssj2008 for Xeon X5650
 
 ![](img/Chapter_01_46.png)
 
-Chapter 1 — Computer Abstractions and Technology —
+
 
 ![](img/Chapter_01_47.png)
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Pitfall: Amdahl’s Law
+
+### Pitfall: Amdahl’s Law
 
 Improving an aspect of a computer and expecting a proportional improvement in overall performance
 
-§1\.10 Fallacies and Pitfalls
+## §1\.10 Fallacies and Pitfalls
 
 
 
@@ -751,9 +751,9 @@ Improving an aspect of a computer and expecting a proportional improvement in ov
 
 Corollary: make the common case fast
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Fallacy: Low Power at Idle
+
+### Fallacy: Low Power at Idle
 
 
 
@@ -767,9 +767,9 @@ Chapter 1 — Computer Abstractions and Technology —
 * Consider designing processors to make power proportional to load
 
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Pitfall: MIPS as a Performance Metric
+
+### Pitfall: MIPS as a Performance Metric
 
 
 
@@ -780,9 +780,9 @@ Chapter 1 — Computer Abstractions and Technology —
   * CPI varies between programs on a given CPU
 
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Concluding Remarks
+
+### Concluding Remarks
 
 
 
@@ -798,11 +798,11 @@ Chapter 1 — Computer Abstractions and Technology —
   * Use parallelism to improve performance
 
 
-§1\.11 Concluding Remarks
+## §1\.11 Concluding Remarks
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# Ongoing Innovations
+
+### Ongoing Innovations
 
 Exascale computing
 
@@ -816,9 +816,9 @@ Quantum computing
 
 <span style="color:#c00000"> __Apple\, Google\, Facebook\, Amazon\, Microsoft – Which does not pay attention to computer architecture?__ </span>
 
-Chapter 1 — Computer Abstractions and Technology —
 
-# This Is an Engineering Course
+
+### This Is an Engineering Course
 
 
 
@@ -831,5 +831,5 @@ Chapter 1 — Computer Abstractions and Technology —
 * _~ AI System Architect_
 
 
-Chapter 1 — Computer Abstractions and Technology —
+
 

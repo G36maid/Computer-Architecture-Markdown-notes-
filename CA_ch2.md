@@ -9,9 +9,9 @@
 
 # Instructions: Language of the Computer
 
-# Instruction Set
+### Instruction Set
 
-§2\.1 Introduction
+## §2\.1 Introduction
 
 
 
@@ -23,9 +23,8 @@
 * Many modern computers also have simple instruction sets
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# The RISC-V Instruction Set
+### The RISC-V Instruction Set
 
 
 
@@ -38,38 +37,41 @@ Chapter 2 — Instructions: Language of the Computer —
   * Applications in consumer electronics\, network/storage equipment\, cameras\, printers\, …
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Arithmetic Operations
-
+### Arithmetic Operations
 
 
-* Add and subtract\, three operands
+
+* Add and subtract, three operands
   * Two sources and one destination
-* add a\, b\, c  // a gets b \+ c
+* add a, b, c  // a gets b + c
 * All arithmetic operations have this form
 * _Design Principle 1:_  Simplicity favors regularity
   * Regularity makes implementation simpler
   * Simplicity enables higher performance at lower cost
 
 
-§2\.2 Operations of the Computer Hardware
+## §2\.2 Operations of the Computer Hardware
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Arithmetic Example
+### Arithmetic Example
 
 C code:
 
-f = \(g \+ h\) \- \(i \+ j\);
+```c
+f = (g + h) - (i + j);
+```
 
 Compiled RISC\-V code:
 
-add t0\, g\, h   // temp t0 = g \+ hadd t1\, i\, j   // temp t1 = i \+ jadd f\, t0\, t1  // f = t0 \- t1
+```assembly
+add t0, g, h   // temp t0 = g + h
+add t1, i, j   // temp t1 = i + j
+sub f, t0, t1  // f = t0 - t1
+```
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Register Operands
+### Register Operands
 
 
 
@@ -83,48 +85,41 @@ Chapter 2 — Instructions: Language of the Computer —
   * c\.f\. main memory: millions of locations
 
 
-§2\.3 Operands of the Computer Hardware
+## §2\.3 Operands of the Computer Hardware
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# RISC-V Registers
+### RISC-V Registers
+- `x0`: the constant value 0
+- `x1`: return address
+- `x2`: stack pointer
+- `x3`: global pointer
+- `x4`: thread pointer
+- `x5` – `x7`, `x28` – `x31`: temporaries
+- `x8`: frame pointer
+- `x9`, `x18` – `x27`: saved registers
+- `x10` – `x11`: function arguments/results
+- `x12` – `x17`: function arguments
 
-x0: the constant value 0
 
-x1: return address
-
-x2: stack pointer
-
-x3: global pointer
-
-x4: thread pointer
-
-x5 – x7\, x28 – x31: temporaries
-
-x8: frame pointer
-
-x9\, x18 – x27: saved registers
-
-x10 – x11: function arguments/results
-
-x12 – x17: function arguments
-
-Chapter 2 — Instructions: Language of the Computer —
-
-# Register Operand Example
+### Register Operand Example
 
 
 
 * C code:
-* f = \(g \+ h\) \- \(i \+ j\);
+```c
+f = (g + h) - (i + j);
+```
   * f\, …\, j in x19\, x20\, …\, x23
 * Compiled RISC\-V code:
-* add x5\, x20\, x21add x6\, x22\, x23sub x19\, x5\, x6
+```assembly
+add x5, x20, x21
+add x6, x22, x23
+sub x19, x5, x6
+```
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Memory Operands
+### Memory Operands
 
 
 
@@ -142,24 +137,28 @@ Chapter 2 — Instructions: Language of the Computer —
   * Unlike some other ISAs
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Memory Operand Example
+### Memory Operand Example
 
 
 
 * C code:
-* A\[12\] = h \+ A\[8\];
+```c
+A[12] = h + A[8];
+```
   * h in x21\, base address of A in x22
 * Compiled RISC\-V code:
   * Index 8 requires offset of 64
     * 8 bytes per doubleword
-* ld		x9\, 64\(x22\)add		x9\, x21\, x9sd		x9\, 96\(x22\)
+```assembly
+ld   x9, 64(x22)
+add  x9, x21, x9
+sd   x9, 96(x22)
+```
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Registers vs. Memory
+### Registers vs. Memory
 
 
 
@@ -171,9 +170,8 @@ Chapter 2 — Instructions: Language of the Computer —
   * Register optimization is important\!
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Immediate Operands
+### Immediate Operands
 
 
 
@@ -184,13 +182,12 @@ Chapter 2 — Instructions: Language of the Computer —
   * Immediate operand avoids a load instruction
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Unsigned Binary Integers
+### Unsigned Binary Integers
 
 Given an n\-bit number
 
-§2\.4 Signed and Unsigned Numbers
+## §2\.4 Signed and Unsigned Numbers
 
 
 
@@ -200,9 +197,8 @@ Given an n\-bit number
 * Using 64 bits: 0 to \+18\,446\,774\,073\,709\,551\,615
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# 2s-Complement Signed Integers
+### 2s-Complement Signed Integers
 
 Given an n\-bit number
 
@@ -214,7 +210,6 @@ Given an n\-bit number
 * Using 64 bits: −9\,223\,372\,036\,854\,775\,808			to 9\,223\,372\,036\,854\,775\,807
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
 
 
@@ -230,9 +225,8 @@ Chapter 2 — Instructions: Language of the Computer —
   * Most\-positive:	0111 1111 … 1111
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Signed Negation
+### Signed Negation
 
 
 
@@ -243,9 +237,8 @@ Chapter 2 — Instructions: Language of the Computer —
   * –2 = 1111 1111 … 1101two \+ 1     = 1111 1111 … 1110two
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Sign Extension
+### Sign Extension
 
 
 
@@ -261,9 +254,8 @@ Chapter 2 — Instructions: Language of the Computer —
   * lbu: zero\-extend loaded byte
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Representing Instructions
+### Representing Instructions
 
 
 
@@ -275,11 +267,10 @@ Chapter 2 — Instructions: Language of the Computer —
   * Regularity\!
 
 
-§2\.5 Representing Instructions in the Computer
+## §2\.5 Representing Instructions in the Computer
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Hexadecimal
+### Hexadecimal
 
 
 
@@ -300,9 +291,8 @@ Chapter 2 — Instructions: Language of the Computer —
   * 1110 1100 1010 1000 0110 0100 0010 0000
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# RISC-V R-format Instructions
+### RISC-V R-format Instructions
 
 
 
@@ -315,19 +305,16 @@ Chapter 2 — Instructions: Language of the Computer —
   * funct7: 7\-bit function code \(additional opcode\)
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# R-format Example
+### R-format Example
 
-add x9\,x20\,x21
+```assembly
+add x9, x20, x21
+```
+0000 0001 0101 1010 0000 0100 1011 0011two = 015A04B316
 
-0000 0001 0101 1010 0000 0100 1011 0011two =
 
-015A04B316
-
-Chapter 2 — Instructions: Language of the Computer —
-
-# RISC-V I-format Instructions
+### RISC-V I-format Instructions
 
 
 
@@ -340,7 +327,6 @@ Chapter 2 — Instructions: Language of the Computer —
   * Keep formats as similar as possible
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
 
 
@@ -351,9 +337,8 @@ Chapter 2 — Instructions: Language of the Computer —
     * Split so that rs1 and rs2 fields always in the same place
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Stored Program Computers
+### Stored Program Computers
 
 
 
@@ -367,11 +352,10 @@ Chapter 2 — Instructions: Language of the Computer —
 
 ![](img/Chapter_02_0.png)
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Logical Operations
+### Logical Operations
 
-§2\.6 Logical Operations
+## §2\.6 Logical Operations
 
 Instructions for bitwise manipulation
 
@@ -386,9 +370,8 @@ Instructions for bitwise manipulation
 
 Useful for extracting and inserting groups of bits in a word
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Shift Operations
+### Shift Operations
 
 
 
@@ -401,9 +384,8 @@ Chapter 2 — Instructions: Language of the Computer —
   * srli by  _i_  bits divides by 2 _i_  \(unsigned only\)
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# AND Operations
+### AND Operations
 
 
 
@@ -418,9 +400,8 @@ Chapter 2 — Instructions: Language of the Computer —
 
 00000000 00000000 00000000 00000000 00000000 00000000 00001100 00000000
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# OR Operations
+### OR Operations
 
 
 
@@ -435,7 +416,6 @@ Chapter 2 — Instructions: Language of the Computer —
 
 00000000 00000000 00000000 00000000 00000000 00000000 00111101 11000000
 
-Chapter 2 — Instructions: Language of the Computer —
 
 
 
@@ -450,9 +430,8 @@ Chapter 2 — Instructions: Language of the Computer —
 
 11111111    11111111  11111111   11111111   11111111   11111111   11110010  00111111
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Conditional Operations
+### Conditional Operations
 
 
 
@@ -464,42 +443,60 @@ Chapter 2 — Instructions: Language of the Computer —
   * if \(rs1 \!= rs2\) branch to instruction labeled L1
 
 
-§2\.7 Instructions for Making Decisions
+## §2\.7 Instructions for Making Decisions
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Compiling If Statements
+### Compiling If Statements
 
 
 
 * C code:
-* if \(i==j\) f = g\+h;else f = g\-h;
+```c
+if (i == j) 
+  f = g + h;
+else 
+  f = g - h;
+```
   * f\, g\, … in x19\, x20\, …
 * Compiled RISC\-V code:
-* bne x22\, x23\, Else      add x19\, x20\, x21      beq x0\,x0\,Exit // unconditionalElse: sub x19\, x20\, x21Exit: …
+```assembly
+bne x22\, x23\, Else
+add x19\, x20\, x21
+beq x0\, x0\, Exit // unconditional
+Else: sub x19\, x20\, x21
+Exit: …
+```
 
 
 ![](img/Chapter_02_1.png)
 
 Assembler calculates addresses
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Compiling Loop Statements
+### Compiling Loop Statements
 
 
 
 * C code:
-* while \(save\[i\] == k\) i \+= 1;
+```c
+while (save[i] == k) 
+  i += 1;
+```
   * i in x22\, k in x24\, address of save in x25
 * Compiled RISC\-V code:
-* Loop: slli x10\, x22\, 3      add  x10\, x10\, x25      ld   x9\, 0\(x10\)      bne  x9\, x24\, Exit
-* addi x22\, x22\, 1      beq  x0\, x0\, LoopExit: …
+```assembly
+Loop: slli x10\, x22\, 3
+      add  x10\, x10\, x25
+      ld   x9\, 0\(x10\)
+      bne  x9\, x24\, Exit
+      addi x22\, x22\, 1
+      beq  x0\, x0\, Loop
+Exit: …
+```
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Basic Blocks
+### Basic Blocks
 
 
 
@@ -512,27 +509,26 @@ A compiler identifies basic blocks for optimization
 
 An advanced processor can accelerate execution of basic blocks
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# More Conditional Operations
-
+### More Conditional Operations
 
 
-* blt rs1\, rs2\, L1
-  * if \(rs1 < rs2\) branch to instruction labeled L1
-* bge rs1\, rs2\, L1
-  * if \(rs1 >= rs2\) branch to instruction labeled L1
+
+```markdown
+* blt rs1, rs2, L1
+  * if (rs1 < rs2) branch to instruction labeled L1
+* bge rs1, rs2, L1
+  * if (rs1 >= rs2) branch to instruction labeled L1
 * Example
-  * if \(a > b\) a \+= 1;
-  * a in x22\, b in x23
-  * bge  x23\, x22\, Exit       // branch if b >= a
-  * addi x22\, x22\, 1
+  * if (a > b) a += 1;
+  * a in x22, b in x23
+  * bge x23, x22, Exit       // branch if b >= a
+  * addi x22, x22, 1
   * Exit:
+```
 
 
-Chapter 2 — Instructions: Language of the Computer —
-
-# Signed vs. Unsigned
+### Signed vs. Unsigned
 
 
 
@@ -547,9 +543,8 @@ Chapter 2 — Instructions: Language of the Computer —
     * \+4\,294\,967\,295 > \+1
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Procedure Calling
+### Procedure Calling
 
 
 
@@ -562,11 +557,10 @@ Chapter 2 — Instructions: Language of the Computer —
   * Return to place of call \(address in x1\)
 
 
-§2\.8 Supporting Procedures in Computer Hardware
+## §2\.8 Supporting Procedures in Computer Hardware
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Procedure Call Instructions
+### Procedure Call Instructions
 
 
 
@@ -582,69 +576,59 @@ Chapter 2 — Instructions: Language of the Computer —
     * e\.g\.\, for case/switch statements
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Leaf Procedure Example
+### Leaf Procedure Example
 
 
 
 * C code:
-* long long int leaf\_example \(	long long int g\, long long int h\,	long long int i\, long long int j\) \{  long long int f;  f = \(g \+ h\) \- \(i \+ j\);  return f;\}
+```c
+long long int leaf_example (long long int g, long long int h, long long int i, long long int j) {
+  long long int f;
+  f = (g + h) - (i + j);
+  return f;
+}
+```
   * Arguments g\, …\, j in x10\, …\, x13
   * f in x20
   * temporaries x5\, x6
   * Need to save x5\, x6\, x20 on stack
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
 RISC\-V code:
-
-leaf\_example:
-
-addi sp\,sp\,\-24
-
-sd   x5\,16\(sp\)
-
-sd   x6\,8\(sp\)
-
-sd   x20\,0\(sp
-
-add  x5\,x10\,x11
-
-add  x6\,x12\,x1
-
-sub  x20\,x5\,x6
-
-addi x10\,x20\,0
-
-ld   x20\,0\(sp\)
-
-ld   x6\,8\(sp\)
-
-ld   x5\,16\(sp\)
-
-addi sp\,sp\,24
-
-jalr x0\,0\(x1\)
+```assembly
+leaf_example:
+  addi sp\, sp\, -24
+  sd   x5\, 16\(sp\)
+  sd   x6\, 8\(sp\)
+  sd   x20\, 0\(sp\)
+  add  x5\, x10\, x11
+  add  x6\, x12\, x13
+  sub  x20\, x5\, x6
+  addi x10\, x20\, 0
+  ld   x20\, 0\(sp\)
+  ld   x6\, 8\(sp\)
+  ld   x5\, 16\(sp\)
+  addi sp\, sp\, 24
+  jalr x0\, 0\(x1\)
+```
 
 Save x5\, x6\, x20 on stack
 
 copy f to return register
 
-Resore x5\, x6\, x20 from stack
+Restore x5\, x6\, x20 from stack
 
 Return to caller
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Local Data on the Stack
+### Local Data on the Stack
 
 ![](img/Chapter_02_2.png)
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Register Usage
+### Register Usage
 
 
 
@@ -654,9 +638,8 @@ Chapter 2 — Instructions: Language of the Computer —
   * If used\, the callee saves and restores them
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Non-Leaf Procedures
+### Non-Leaf Procedures
 
 
 
@@ -667,55 +650,43 @@ Chapter 2 — Instructions: Language of the Computer —
 * Restore from the stack after the call
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Non-Leaf Procedure Example
+### Non-Leaf Procedure Example
 
 
 
 * C code:
-* long long int fact \(long long int n\)\{   if \(n < 1\) return f;  else return n \* fact\(n \- 1\);\}
+```c
+long long int fact (long long int n) {
+  if (n < 1) return 1;
+  else return n * fact(n - 1);
+}
+```
   * Argument n in x10
   * Result in x10
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
 RISC\-V code:
-
+```assembly
 fact:
-
-addi sp\,sp\,\-16
-
-sd   x1\,8\(sp\)
-
-sd   x10\,0\(sp\)
-
-addi x5\,x10\,\-1
-
-bge  x5\,x0\,L1
-
-addi x10\,x0\,1
-
-addi sp\,sp\,16
-
-jalr x0\,0\(x1\)
-
-L1: addi x10\,x10\,\-1
-
-jal  x1\,fact
-
-addi x6\,x10\,0
-
-ld   x10\,0\(sp\)
-
-ld   x1\,8\(sp\)
-
-addi sp\,sp\,16
-
-mul  x10\,x10\,x6
-
-jalr x0\,0\(x1\)
+  addi sp\, sp\, -16
+  sd   x1\, 8\(sp\)
+  sd   x10\, 0\(sp\)
+  addi x5\, x10\, -1
+  bge  x5\, x0\, L1
+  addi x10\, x0\, 1
+  addi sp\, sp\, 16
+  jalr x0\, 0\(x1\)
+L1: addi x10\, x10\, -1
+  jal  x1\, fact
+  addi x6\, x10\, 0
+  ld   x10\, 0\(sp\)
+  ld   x1\, 8\(sp\)
+  addi sp\, sp\, 16
+  mul  x10\, x10\, x6
+  jalr x0\, 0\(x1\)
+```
 
 Save return address and n on stack
 
@@ -733,9 +704,8 @@ Restore caller’s return address
 
 return n \* fact\(n\-1\)
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Memory Layout
+### Memory Layout
 
 
 
@@ -750,9 +720,8 @@ Chapter 2 — Instructions: Language of the Computer —
 
 ![](img/Chapter_02_3.png)
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Local Data on the Stack
+### Local Data on the Stack
 
 ![](img/Chapter_02_4.png)
 
@@ -764,9 +733,8 @@ Chapter 2 — Instructions: Language of the Computer —
   * Used by some compilers to manage stack storage
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Character Data
+### Character Data
 
 
 
@@ -781,11 +749,10 @@ Chapter 2 — Instructions: Language of the Computer —
   * UTF\-8\, UTF\-16: variable\-length encodings
 
 
-§2\.9 Communicating with People
+## §2\.9 Communicating with People
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Byte/Halfword/Word Operations
+### Byte/Halfword/Word Operations
 
 
 
@@ -804,9 +771,8 @@ Chapter 2 — Instructions: Language of the Computer —
     * sw rs2\, offset\(rs1\)
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# String Copy Example
+### String Copy Example
 
 
 
@@ -815,15 +781,26 @@ Chapter 2 — Instructions: Language of the Computer —
 * void strcpy \(char x\[\]\, char y\[\]\)\{ size\_t i;  i = 0;  while \(\(x\[i\]=y\[i\]\)\!='\\0'\)    i \+= 1;\}
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
 RISC\-V code:
+```assembly
+strcpy:	addi sp\,sp\,\-8		// adjust stack for 1 doubleword
+	sd   x19\,0\(sp\)      // push x19
+	add  x19\,x0\,x0	// i=0
+L1: add  x5\,x19\,x10	// x5 = addr of y\[i\]
+	lbu  x6\,0\(x5\)		// x6 = y\[i\]
+	add  x7\,x19\,x10	// x7 = addr of x\[i\]
+	sb   x6\,0\(x7\)		// x\[i\] = y\[i\]
+	beq  x6\,x0\,L2		// if y\[i\] == 0 then exit
+	addi x19\,x19\,	1	// i = i \+ 1
+	jal  x0\,L1		// next iteration of loop
+L2: ld   x19\,0\(sp\)	// restore saved x19
+	addi sp\,sp\,8		// pop 1 doubleword from stack
+	jalr x0\,0\(x1\)		// and return
+```
 
-strcpy:	addi sp\,sp\,\-8		// adjust stack for 1 doubleword	sd   x19\,0\(sp\)      // push x19	add  x19\,x0\,x0	// i=0L1: add  x5\,x19\,x10	// x5 = addr of y\[i\]	lbu  x6\,0\(x5\)		// x6 = y\[i\]	add  x7\,x19\,x10	// x7 = addr of x\[i\]	sb   x6\,0\(x7\)		// x\[i\] = y\[i\]	beq  x6\,x0\,L2		// if y\[i\] == 0 then exit	addi x19\,x19\,	1	// i = i \+ 1	jal  x0\,L1		// next iteration of loopL2: ld   x19\,0\(sp\)	// restore saved x19	addi sp\,sp\,8		// pop 1 doubleword from stack	jalr x0\,0\(x1\)		// and return
 
-Chapter 2 — Instructions: Language of the Computer —
-
-# 32-bit Constants
+### 32-bit Constants
 
 
 
@@ -836,7 +813,7 @@ Chapter 2 — Instructions: Language of the Computer —
   * Clears bits \[11:0\] of rd to 0
 
 
-§2\.10 RISC\-V Addressing for Wide Immediates and Addresses
+## §2\.10 RISC\-V Addressing for Wide Immediates and Addresses
 
 lui x19\, 976  // 0x003D0
 
@@ -854,9 +831,8 @@ addi x19\,x19\,1280  // 0x500
 
 0000 0000 0011 1101 0000
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Branch Addressing
+### Branch Addressing
 
 
 
@@ -869,9 +845,8 @@ Chapter 2 — Instructions: Language of the Computer —
   * Target address = PC \+ immediate × 2
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Jump Addressing
+### Jump Addressing
 
 Jump and link \(jal\) target uses 20\-bit immediate for larger range
 
@@ -884,21 +859,18 @@ UJ format:
   * jalr: add address\[11:0\] and jump to target
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# RISC-V Addressing Summary
+### RISC-V Addressing Summary
 
 ![](img/Chapter_02_5.png)
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# RISC-V Encoding Summary
+### RISC-V Encoding Summary
 
 ![](img/Chapter_02_6.png)
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Synchronization
+### Synchronization
 
 
 
@@ -914,11 +886,10 @@ Chapter 2 — Instructions: Language of the Computer —
   * Or an atomic pair of instructions
 
 
-§2\.11 Parallelism and Instructions: Synchronization
+## §2\.11 Parallelism and Instructions: Synchronization
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Synchronization in RISC-V
+### Synchronization in RISC-V
 
 
 
@@ -933,7 +904,6 @@ Chapter 2 — Instructions: Language of the Computer —
     * Returns non\-zero value in rd
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
 
 
@@ -952,19 +922,17 @@ Chapter 2 — Instructions: Language of the Computer —
   * sd   x0\,0\(x20\)		// free lock
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Translation and Startup
+### Translation and Startup
 
 ![](img/Chapter_02_7.png)
 
 Many compilers produce object modules directly
 
-§2\.12 Translating and Starting a Program
+## §2\.12 Translating and Starting a Program
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Producing an Object Module
+### Producing an Object Module
 
 
 
@@ -978,9 +946,8 @@ Chapter 2 — Instructions: Language of the Computer —
   * Debug info: for associating with source code
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Linking Object Modules
+### Linking Object Modules
 
 
 
@@ -993,9 +960,8 @@ Chapter 2 — Instructions: Language of the Computer —
   * Program can be loaded into absolute location in virtual memory space
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Loading a Program
+### Loading a Program
 
 
 
@@ -1011,9 +977,8 @@ Chapter 2 — Instructions: Language of the Computer —
     * When main returns\, do exit syscall
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Dynamic Linking
+### Dynamic Linking
 
 
 
@@ -1023,9 +988,8 @@ Chapter 2 — Instructions: Language of the Computer —
   * Automatically picks up new library versions
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Lazy Linkage
+### Lazy Linkage
 
 ![](img/Chapter_02_8.png)
 
@@ -1037,9 +1001,8 @@ Linker/loader code
 
 Dynamicallymapped code
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Starting Java Applications
+### Starting Java Applications
 
 Simple portable instruction set for the JVM
 
@@ -1049,9 +1012,8 @@ Compiles bytecodes of “hot” methods into native code for host machine
 
 Interprets bytecodes
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# C Sort Example
+### C Sort Example
 
 
 
@@ -1061,11 +1023,10 @@ Chapter 2 — Instructions: Language of the Computer —
   * v in x10\, k in x11\, temp in x5
 
 
-§2\.13 A C Sort Example to Put It All Together
+## §2\.13 A C Sort Example to Put It All Together
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# The Procedure Swap
+### The Procedure Swap
 
 swap:
 
@@ -1083,9 +1044,8 @@ sd   x5\,8\(x6\)    // v\[k\+1\] = reg x5 \(temp\)
 
 jalr x0\,0\(x1\)    // return to calling routine
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# The Sort Procedure in C
+### The Sort Procedure in C
 
 
 
@@ -1104,9 +1064,8 @@ Chapter 2 — Instructions: Language of the Computer —
   * v in x10\, n in x11\, i in x19\, j in x20
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# The Outer Loop
+### The Outer Loop
 
 
 
@@ -1121,9 +1080,8 @@ Chapter 2 — Instructions: Language of the Computer —
 * exit1:
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# The Inner Loop
+### The Inner Loop
 
 
 
@@ -1147,9 +1105,8 @@ Chapter 2 — Instructions: Language of the Computer —
 * exit2:
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Preserving Registers
+### Preserving Registers
 
 Preserve saved registers:
 
@@ -1183,19 +1140,16 @@ addi sp\,sp\, 40  // restore stack pointer
 
 jalr x0\,0\(x1\)
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Effect of Compiler Optimization
+### Effect of Compiler Optimization
 
 Compiled with gcc for Pentium 4 under Linux
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Effect of Language and Algorithm
+### Effect of Language and Algorithm
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Lessons Learnt
+### Lessons Learnt
 
 
 
@@ -1206,9 +1160,8 @@ Chapter 2 — Instructions: Language of the Computer —
 * Nothing can fix a dumb algorithm\!
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Arrays vs. Pointers
+### Arrays vs. Pointers
 
 
 
@@ -1219,19 +1172,27 @@ Chapter 2 — Instructions: Language of the Computer —
   * Can avoid indexing complexity
 
 
-§2\.14 Arrays versus Pointers
+## §2\.14 Arrays versus Pointers
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Example: Clearing an Array
+### Example: Clearing an Array
 
 | clear1\(int array\[\]\, int size\) \{  int i;  for \(i = 0; i < size; i \+= 1\)    array\[i\] = 0;\} | clear2\(int \*array\, int size\) \{  int \*p;  for \(p = &array\[0\]; p < &array\[size\];       p = p \+ 1\)    \*p = 0;\} |
 | :-: | :-: |
-| li   x5\,0       // i = 0loop1:   slli x6\,x5\,3    // x6 = i \* 8   add  x7\,x10\,x6  // x7 = address                   // of array\[i\]   sd   x0\,0\(x7\)   // array\[i\] = 0   addi x5\,x5\,1    // i = i \+ 1   blt  x5\,x11\,loop1  // if \(i<size\)                      // go to loop1 | mv x5\,x10      // p = address                  // of array\[0\]   slli x6\,x11\,3  // x6 = size \* 8   add x7\,x10\,x6  // x7 = address                  // of array\[size\]loop2:   sd x0\,0\(x5\)    // Memory\[p\] = 0   addi x5\,x5\,8   // p = p \+ 8   bltu x5\,x7\,loop2                  // if \(p<&array\[size\]\)                  // go to loop2 |
+| li   x5\,0       // i = 0
+loop1:   slli x6\,x5\,3    // x6 = i \* 8
+   add  x7\,x10\,x6  // x7 = address                   // of array\[i\]
+   sd   x0\,0\(x7\)   // array\[i\] = 0
+   addi x5\,x5\,1    // i = i \+ 1
+   blt  x5\,x11\,loop1  // if \(i<size\)                      // go to loop1 | mv x5\,x10      // p = address                  // of array\[0\]
+   slli x6\,x11\,3  // x6 = size \* 8
+   add x7\,x10\,x6  // x7 = address                  // of array\[size\]
+loop2:   sd x0\,0\(x5\)    // Memory\[p\] = 0
+   addi x5\,x5\,8   // p = p \+ 8
+   bltu x5\,x7\,loop2                  // if \(p<&array\[size\]\)                  // go to loop2 |
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Comparison of Array vs. Ptr
+### Comparison of Array vs. Ptr
 
 
 
@@ -1244,9 +1205,8 @@ Chapter 2 — Instructions: Language of the Computer —
   * Better to make program clearer and safer
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# MIPS Instructions
+### MIPS Instructions
 
 
 
@@ -1264,17 +1224,15 @@ Chapter 2 — Instructions: Language of the Computer —
     * Then use beq\, bne to complete the branch
 
 
-§2\.16 Real Stuff: MIPS Instructions
+## §2\.16 Real Stuff: MIPS Instructions
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Instruction Encoding
+### Instruction Encoding
 
 ![](img/Chapter_02_10.png)
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# The Intel x86 ISA
+### The Intel x86 ISA
 
 
 
@@ -1292,9 +1250,8 @@ Chapter 2 — Instructions: Language of the Computer —
     * Paged memory mapping as well as segments
 
 
-§2\.19 Real Stuff: x86 Instructions
+## §2\.19 Real Stuff: x86 Instructions
 
-Chapter 2 — Instructions: Language of the Computer —
 
 
 
@@ -1313,7 +1270,6 @@ Chapter 2 — Instructions: Language of the Computer —
     * Added SSE2 instructions
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
 
 
@@ -1332,15 +1288,13 @@ Chapter 2 — Instructions: Language of the Computer —
   * Technical elegance ≠ market success
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Basic x86 Registers
+### Basic x86 Registers
 
 ![](img/Chapter_02_11.png)
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Basic x86 Addressing Modes
+### Basic x86 Addressing Modes
 
 Two operands per instruction
 
@@ -1361,9 +1315,8 @@ Two operands per instruction
   * Address =  Rbase \+ 2scale × Rindex \+ displacement
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# x86 Instruction Encoding
+### x86 Instruction Encoding
 
 
 
@@ -1375,9 +1328,8 @@ Chapter 2 — Instructions: Language of the Computer —
 
 ![](img/Chapter_02_12.png)
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Implementing IA-32
+### Implementing IA-32
 
 
 
@@ -1391,9 +1343,8 @@ Chapter 2 — Instructions: Language of the Computer —
   * Compilers avoid complex instructions
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Other RISC-V Instructions
+### Other RISC-V Instructions
 
 
 
@@ -1408,11 +1359,10 @@ Chapter 2 — Instructions: Language of the Computer —
   * registers are 32\-bits wide\, 32\-bit operations
 
 
-§2\.20 The Rest of the RISC\-V Instruction Set
+## §2\.20 The Rest of the RISC\-V Instruction Set
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Instruction Set Extensions
+### Instruction Set Extensions
 
 
 
@@ -1424,9 +1374,8 @@ Chapter 2 — Instructions: Language of the Computer —
   * 16\-bit encoding for frequently used instructions
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Fallacies
+### Fallacies
 
 
 
@@ -1440,9 +1389,8 @@ Chapter 2 — Instructions: Language of the Computer —
   * More lines of code  more errors and less productivity
 
 
-§2\.22 Fallacies and Pitfalls
+## §2\.22 Fallacies and Pitfalls
 
-Chapter 2 — Instructions: Language of the Computer —
 
 
 
@@ -1452,9 +1400,8 @@ Chapter 2 — Instructions: Language of the Computer —
 
 x86 instruction set
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Pitfalls
+### Pitfalls
 
 
 
@@ -1465,9 +1412,8 @@ Chapter 2 — Instructions: Language of the Computer —
   * Pointer becomes invalid when stack popped
 
 
-Chapter 2 — Instructions: Language of the Computer —
 
-# Concluding Remarks
+### Concluding Remarks
 
 
 
@@ -1482,7 +1428,6 @@ Chapter 2 — Instructions: Language of the Computer —
   * c\.f\. x86
 
 
-§2\.23 Concluding Remarks
+## §2\.23 Concluding Remarks
 
-Chapter 2 — Instructions: Language of the Computer —
 
