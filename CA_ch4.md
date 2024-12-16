@@ -7,7 +7,7 @@
 - [Chapter 5](CA_ch5.md)
 - [Chapter 6](CA_ch6.md)
 
-## The Processor
+# The Processor
 
 ### Introduction
 

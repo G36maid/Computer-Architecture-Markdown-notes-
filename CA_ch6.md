@@ -256,25 +256,21 @@ Vector units can be combination of pipelined and arrayed functional units:
 
 ![](img/Chapter_06_4.png)
 
+```c
 half = 64;
 
-do
+do {
+    synch(); // 同步處理器
 
-<span style="color:#ff0000">synch\(\);</span>
+    if (half % 2 != 0 && Pn == 0)
+        sum[0] += sum[half - 1]; // 當處理器數量為奇數時，處理器0需要加上多餘的元素
 
-if \(half%2 \!= 0 && Pn == 0\)
+    half = half / 2; // 將處理器數量減半
 
-sum\[0\] \+= sum\[half\-1\];
-
-/\* Conditional sum needed when half is odd;
-
-Processor0 gets missing element \*/
-
-half = half/2; /\* dividing line on who sums \*/
-
-if \(Pn < half\) sum\[Pn\] \+= sum\[Pn\+half\];
-
-while \(half > 1\);
+    if (Pn < half)
+        sum[Pn] += sum[Pn + half]; // 每對處理器進行加總
+} while (half > 1);
+```
 
 ### History of GPUs
 
@@ -387,16 +383,29 @@ Hardware sends/receives messages between processors
 
 ### Sum Reduction (Again)
 
-- Sum 64\,000 on 64 processors
+- Sum 64,000 on 64 processors
 - First distribute 1000 numbers to each
-  - The do partial sums
-  - sum = 0;for \(i = 0; i<1000; i \+= 1\)  sum \+= AN\[i\];
+  - Then do partial sums
+  - `sum = 0; for (i = 0; i < 1000; i += 1) sum += AN[i];`
 - Reduction
-  - Half the processors send\, other half receive and add
-  - The quarter send\, quarter receive and add\, …
+  - Half the processors send, other half receive and add
+  - Then quarter send, quarter receive and add, …
 
-- Given send\(\) and receive\(\) operations
-  - limit = 64; half = 64;/\* 64 processors \*/do  half = \(half\+1\)/2; /\* send vs\. receive                        dividing line \*/  if \(Pn >= half && Pn < limit\)     <span style="color:#ff0000">send\(Pn \- half\, sum\)</span> ;  if \(Pn < \(limit/2\)\)    sum \+=  <span style="color:#ff0000">receive\(\)</span> ;  limit = half; /\* upper limit of senders \*/while \(half > 1\); /\* exit with final sum \*/
+- Given `send()` and `receive()` operations
+
+  ```c
+  limit = 64;
+  half = 64; /* 64 processors */
+  do {
+      half = (half + 1) / 2; /* send vs. receive dividing line */
+      if (Pn >= half && Pn < limit)
+          send(Pn - half, sum);
+      if (Pn < (limit / 2))
+          sum += receive();
+      limit = half; /* upper limit of senders */
+  } while (half > 1); /* exit with final sum */
+  ```
+
   - Send/receive also provide synchronization
   - Assumes send/receive take similar time to addition
 
@@ -565,69 +574,38 @@ Choice of optimization depends on arithmetic intensity of code
 
 Use OpenMP:
 
-1\. \#include \<x86intrin\.h>
+```c
+#include <x86intrin.h>
 
-2\. \#define UNROLL \(4\)
+#define UNROLL (4)
+#define BLOCKSIZE 32
 
-3\. \#define BLOCKSIZE 32
+void do_block(int n, int si, int sj, int sk, double *A, double *B, double *C) {
+  for (int i = si; i < si + BLOCKSIZE; i += UNROLL * 8)
+    for (int j = sj; j < sj + BLOCKSIZE; j++) {
+      __m512d c[UNROLL];
+      for (int r = 0; r < UNROLL; r++)
+        c[r] = _mm512_load_pd(C + i + r * 8 + j * n);
 
-4\. void do\_block \(int n\, int si\, int sj\, int sk\,
+      for (int k = sk; k < sk + BLOCKSIZE; k++) {
+        __m512d bb = _mm512_broadcastsd_pd(_mm_load_sd(B + j * n + k));
+        for (int r = 0; r < UNROLL; r++)
+          c[r] = _mm512_fmadd_pd(_mm512_load_pd(A + n * k + r * 8 + i), bb, c[r]);
+      }
 
-5\.                double \*A\, double \*B\, double \*C\)
+      for (int r = 0; r < UNROLL; r++)
+        _mm512_store_pd(C + i + r * 8 + j * n, c[r]);
+    }
+}
 
-6\. \{
-
-7\.   for \( int i = si; i < si\+BLOCKSIZE; i\+=UNROLL\*8 \)
-
-8\.     for \( int j = sj; j < sj\+BLOCKSIZE; j\+\+ \) \{
-
-9\.       \_\_m512d c\[UNROLL\];
-
-10\.       for \(int r=0;r<UNROLL;r\+\+\)
-
-11\.         c\[r\] =  \_mm512\_load\_pd\(C\+i\+r\*8\+j\*n\); //\[ UNROLL\];
-
-12\.
-
-13\.       for\( int k = sk; k < sk\+BLOCKSIZE; k\+\+ \)
-
-14\.       \{
-
-15\.         \_\_m512d bb = \_mm512\_broadcastsd\_pd\(\_mm\_load\_sd\(B\+j\*n\+k\)\);
-
-16\.         for \(int r=0;r<UNROLL;r\+\+\)
-
-17\.           c\[r\] = \_mm512\_fmadd\_pd\(\_mm512\_load\_pd\(A\+n\*k\+r\*8\+i\)\, bb\, c\[r\]\);
-
-18\.        \}
-
-19\.
-
-20\.      for \(int r=0;r<UNROLL;r\+\+\)
-
-21\.        \_mm512\_store\_pd\(C\+i\+r\*8\+j\*n\, c\[r\]\);
-
-22\.      \}
-
-23\.   \}
-
-24\.
-
-25\. void dgemm \(int n\, double\* A\, double\* B\, double\* C\)
-
-26\. \{
-
-27\. \#pragma omp parallel for
-
-28\.   for \( int sj = 0; sj < n; sj \+= BLOCKSIZE \)
-
-29\.     for \( int si = 0; si < n; si \+= BLOCKSIZE \)
-
-30\.       for \( int sk = 0; sk < n; sk \+= BLOCKSIZE \)
-
-31\.         do\_block\(n\, si\, sj\, sk\, A\, B\, C\);
-
-32\. \}
+void dgemm(int n, double *A, double *B, double *C) {
+#pragma omp parallel for
+  for (int sj = 0; sj < n; sj += BLOCKSIZE)
+    for (int si = 0; si < n; si += BLOCKSIZE)
+      for (int sk = 0; sk < n; sk += BLOCKSIZE)
+        do_block(n, si, sj, sk, A, B, C);
+}
+```
 
 ## §6\.13 Going Faster:  Multiple Processors and Matrix Multiply
 
