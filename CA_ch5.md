@@ -11,7 +11,7 @@
 
 ### Principle of Locality
 
-## ## §5\.1 Introduction
+## §5\.1 Introduction
 
 
 
@@ -59,7 +59,7 @@
   - Access time of SRAM
   - Capacity and cost/GB of disk
 
-## ## §5\.2 Memory Technologies
+## §5\.2 Memory Technologies
 
 ### DRAM Technology
 
@@ -198,7 +198,7 @@ Nonvolatile\, rotating magnetic storage
   - The level of the memory hierarchy closest to the CPU
 - Given accesses X1\, …\, Xn–1\, Xn
 
-## ## §5\.3 The Basics of Caches
+## §5\.3 The Basics of Caches
 
 ![](img/Chapter_05_8.png)
 
@@ -426,7 +426,7 @@ Initial state
     - Mainly from cache misses
 - With simplifying assumptions:
 
-## ## §5\.4 Measuring and Improving Cache Performance
+## §5\.4 Measuring and Improving Cache Performance
 
 ### Cache Performance Example
 
@@ -692,7 +692,7 @@ _Service accomplishment_
 
 Service deliveredas specified
 
-## ## §5\.5 Dependable Memory Hierarchy
+## §5\.5 Dependable Memory Hierarchy
 
 - Fault: failure of a component
   - May or may not lead to system failure
@@ -751,7 +751,7 @@ Deviation fromspecified service
 
 ### Virtual Machines
 
-## ## §5\.6 Virtual Machines
+## §5\.6 Virtual Machines
 
 - Host computer emulates guest operating system and machine resources
   - Improved isolation of multiple guests
@@ -796,7 +796,7 @@ Deviation fromspecified service
 
 ### Virtual Memory
 
-## ## §5\.7 Virtual Memory
+## §5\.7 Virtual Memory
 
 - Use main memory as a “cache” for secondary \(disk\) storage
   - Managed jointly by CPU hardware and the operating system \(OS\)
@@ -932,7 +932,7 @@ Fixed\-size pages \(e\.g\.\, 4K\)
   - Replacement on a miss
   - Write policy
 
-## ## §5\.8 A Common Framework for Memory Hierarchies
+## §5\.8 A Common Framework for Memory Hierarchies
 
 ### Block Placement
 
@@ -1014,7 +1014,7 @@ Fixed\-size pages \(e\.g\.\, 4K\)
   - Blocking cache
     - CPU waits until access is complete
 
-## ## §5\.9 Using a Finite\-State Machine to Control A Simple Cache
+## §5\.9 Using a Finite\-State Machine to Control A Simple Cache
 
 ### Interface Signals
 
@@ -1049,7 +1049,7 @@ Could partition into separate states to reduce clock cycle time
 | 2 | CPU B reads X | 0 | 0 | 0 |
 | 3 | CPU A writes 1 to X | 1 | <span style="color:#ff0000">0</span> | 1 |
 
-## ## §5\.10 Parallelism and Memory Hierarchies: Cache Coherence
+## §5\.10 Parallelism and Memory Hierarchies: Cache Coherence
 
 ### Coherence Defined
 
