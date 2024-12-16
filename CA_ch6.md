@@ -9,9 +9,9 @@
 
 # Parallel Processors from Client to Cloud
 
-# Introduction
+## Introduction
 
-§6\.1 Introduction
+## §6\.1 Introduction
 
 
 
@@ -25,122 +25,84 @@
 * Multicore microprocessors
   * Chips with multiple processors \(cores\)
 
+### Hardware and Software
 
-Chapter 6 — Parallel Processors from Client to Cloud —
+- Hardware
+  - Serial: e\.g\.\, Pentium 4
+  - Parallel: e\.g\.\, quad\-core Xeon e5345
+- Software
+  - Sequential: e\.g\.\, matrix multiplication
+  - Concurrent: e\.g\.\, operating system
+- Sequential/concurrent software can run on serial/parallel hardware
+  - Challenge: making effective use of parallel hardware
 
-# Hardware and Software
+### What We’ve Already Covered
 
+- §2\.11: Parallelism and Instructions
+  - Synchronization
+- §3\.6: Parallelism and Computer Arithmetic
+  - Subword Parallelism
+- §4\.11: Parallelism via Instructions
+- §5\.10: Parallelism and Memory Hierarchies
+  - Cache Coherence
 
+### Parallel Programming
 
-* Hardware
-  * Serial: e\.g\.\, Pentium 4
-  * Parallel: e\.g\.\, quad\-core Xeon e5345
-* Software
-  * Sequential: e\.g\.\, matrix multiplication
-  * Concurrent: e\.g\.\, operating system
-* Sequential/concurrent software can run on serial/parallel hardware
-  * Challenge: making effective use of parallel hardware
+- Parallel software is the problem
+- Need to get significant performance improvement
+  - Otherwise\, just use a faster uniprocessor\, since it’s easier\!
+- Difficulties
+  - Partitioning
+  - Coordination
+  - Communications overhead
 
+## §6\.2 The Difficulty of Creating Parallel Processing Programs
 
-Chapter 6 — Parallel Processors from Client to Cloud —
+### Amdahl’s Law
 
-# What We’ve Already Covered
+- Sequential part can limit speedup
+- Example: 100 processors\, 90× speedup?
+  - Tnew = Tparallelizable/100 \+ Tsequential
+  - Solving: Fparallelizable = 0\.999
+- Need sequential part to be 0\.1% of original time
 
+### Scaling Example
 
+- Workload: sum of 10 scalars\, and 10 × 10 matrix sum
+  - Speed up from 10 to 100 processors
+- Single processor: Time = \(10 \+ 100\) × tadd
+- 10 processors
+  - Time = 10 × tadd \+ 100/10 × tadd = 20 × tadd
+  - Speedup = 110/20 = 5\.5 \(55% of potential\)
+- 100 processors
+  - Time = 10 × tadd \+ 100/100 × tadd = 11 × tadd
+  - Speedup = 110/11 = 10 \(10% of potential\)
+- Assumes load can be balanced across processors
 
-* §2\.11: Parallelism and Instructions
-  * Synchronization
-* §3\.6: Parallelism and Computer Arithmetic
-  * Subword Parallelism
-* §4\.11: Parallelism via Instructions
-* §5\.10: Parallelism and Memory Hierarchies
-  * Cache Coherence
+### Scaling Example (cont)
 
+- What if matrix size is 100 × 100?
+- Single processor: Time = \(10 \+ 10000\) × tadd
+- 10 processors
+  - Time = 10 × tadd \+ 10000/10 × tadd = 1010 × tadd
+  - Speedup = 10010/1010 = 9\.9 \(99% of potential\)
+- 100 processors
+  - Time = 10 × tadd \+ 10000/100 × tadd = 110 × tadd
+  - Speedup = 10010/110 = 91 \(91% of potential\)
+- Assuming load balanced
 
-Chapter 6 — Parallel Processors from Client to Cloud —
+### Strong vs Weak Scaling
 
-# Parallel Programming
+- Strong scaling: problem size fixed
+  - As in example
+- Weak scaling: problem size proportional to number of processors
+  - 10 processors\, 10 × 10 matrix
+    - Time = 20 × tadd
+  - 100 processors\, 32 × 32 matrix
+    - Time = 10 × tadd \+ 1000/100 × tadd = 20 × tadd
+  - Constant performance in this example
 
-
-
-* Parallel software is the problem
-* Need to get significant performance improvement
-  * Otherwise\, just use a faster uniprocessor\, since it’s easier\!
-* Difficulties
-  * Partitioning
-  * Coordination
-  * Communications overhead
-
-
-§6\.2 The Difficulty of Creating Parallel Processing Programs
-
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# Amdahl’s Law
-
-
-
-* Sequential part can limit speedup
-* Example: 100 processors\, 90× speedup?
-  * Tnew = Tparallelizable/100 \+ Tsequential
-  * Solving: Fparallelizable = 0\.999
-* Need sequential part to be 0\.1% of original time
-
-
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# Scaling Example
-
-
-
-* Workload: sum of 10 scalars\, and 10 × 10 matrix sum
-  * Speed up from 10 to 100 processors
-* Single processor: Time = \(10 \+ 100\) × tadd
-* 10 processors
-  * Time = 10 × tadd \+ 100/10 × tadd = 20 × tadd
-  * Speedup = 110/20 = 5\.5 \(55% of potential\)
-* 100 processors
-  * Time = 10 × tadd \+ 100/100 × tadd = 11 × tadd
-  * Speedup = 110/11 = 10 \(10% of potential\)
-* Assumes load can be balanced across processors
-
-
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# Scaling Example (cont)
-
-
-
-* What if matrix size is 100 × 100?
-* Single processor: Time = \(10 \+ 10000\) × tadd
-* 10 processors
-  * Time = 10 × tadd \+ 10000/10 × tadd = 1010 × tadd
-  * Speedup = 10010/1010 = 9\.9 \(99% of potential\)
-* 100 processors
-  * Time = 10 × tadd \+ 10000/100 × tadd = 110 × tadd
-  * Speedup = 10010/110 = 91 \(91% of potential\)
-* Assuming load balanced
-
-
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# Strong vs Weak Scaling
-
-
-
-* Strong scaling: problem size fixed
-  * As in example
-* Weak scaling: problem size proportional to number of processors
-  * 10 processors\, 10 × 10 matrix
-    * Time = 20 × tadd
-  * 100 processors\, 32 × 32 matrix
-    * Time = 10 × tadd \+ 1000/100 × tadd = 20 × tadd
-  * Constant performance in this example
-
-
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# Instruction and Data Streams
+### Instruction and Data Streams
 
 An alternate classification
 
@@ -150,109 +112,76 @@ An alternate classification
 | Instruction Streams | Single | __SISD__ :Intel Pentium 4 | __SIMD__ : SSE instructions of x86 |
 |  | Multiple | __MISD__ :No examples today | __MIMD__ :Intel Xeon e5345 |
 
-§6\.3 SISD\, MIMD\, SIMD\, SPMD\, and Vector
+## §6\.3 SISD\, MIMD\, SIMD\, SPMD\, and Vector
 
+- SPMD: Single Program Multiple Data
+  - A parallel program on a MIMD computer
+  - Conditional code for different processors
 
+### Vector Processors
 
-* SPMD: Single Program Multiple Data
-  * A parallel program on a MIMD computer
-  * Conditional code for different processors
+- Highly pipelined function units
+- Stream data from/to vector registers to units
+  - Data collected from memory into registers
+  - Results stored from registers to memory
+- Example: Vector extension to RISC\-V
+  - v0 to v31: 32 × 64\-element registers\, \(64\-bit elements\)
+  - Vector instructions
+    - fld\.v\, fsd\.v: load/store vector
+    - fadd\.d\.v: add vectors of double
+    - fadd\.d\.vs: add scalar to each element of vector of double
+- Significantly reduces instruction\-fetch bandwidth
 
-
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# Vector Processors
-
-
-
-* Highly pipelined function units
-* Stream data from/to vector registers to units
-  * Data collected from memory into registers
-  * Results stored from registers to memory
-* Example: Vector extension to RISC\-V
-  * v0 to v31: 32 × 64\-element registers\, \(64\-bit elements\)
-  * Vector instructions
-    * fld\.v\, fsd\.v: load/store vector
-    * fadd\.d\.v: add vectors of double
-    * fadd\.d\.vs: add scalar to each element of vector of double
-* Significantly reduces instruction\-fetch bandwidth
-
-
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# Example: DAXPY (Y = a × X + Y)
+### Example: DAXPY (Y = a × X + Y)
 
 Conventional RISC\-V code:
 
-fld    f0\,a\(x3\)     // load scalar a
+```assembly
+fld    f0, a(x3)     // load scalar a
+addi   x5, x19, 512  // end of array X
 
-addi   x5\,x19\,512   // end of array X
+loop: 
+  fld    f1, 0(x19)    // load x[i]
+  fmul.d f1, f1, f0    // a * x[i]
+  fld    f2, 0(x20)    // load y[i]
+  fadd.d f2, f2, f1    // a * x[i] + y[i]
+  fsd    f2, 0(x20)    // store y[i]
+  addi   x19, x19, 8   // increment index to x
+  addi   x20, x20, 8   // increment index to y
+  bltu   x19, x5, loop // repeat if not done
 
-loop: fld    f1\,0\(x19\)    // load x\[i\]
+// Vector RISC-V code:
+fld       f0, a(x3)    // load scalar a
+fld.v     v0, 0(x19)   // load vector x
+fmul.d.vs v0, v0, f0   // vector-scalar multiply
+fld.v     v1, 0(x20)   // load vector y
+fadd.d.v  v1, v1, v0   // vector-vector add
+fsd.v     v1, 0(x20)   // store vector y
+```
 
-fmul\.d f1\,f1\,f0     // a \* x\[i\]
+### Vector vs. Scalar
 
-fld    f2\,0\(x20\)    // load y\[i\]
+- Vector architectures and compilers
+  - Simplify data\-parallel programming
+  - Explicit statement of absence of loop\-carried dependences
+    - Reduced checking in hardware
+  - Regular access patterns benefit from interleaved and burst memory
+  - Avoid control hazards by avoiding loops
+- More general than ad\-hoc media extensions \(such as MMX\, SSE\)
+  - Better match with compiler technology
 
-fadd\.d f2\,f2\,f1     // a \* x\[i\] \+ y\[i\]
+### SIMD
 
-fsd    f2\,0\(x20\)    // store y\[i\]
+- Operate elementwise on vectors of data
+  - E\.g\.\, MMX and SSE instructions in x86
+    - Multiple data elements in 128\-bit wide registers
+- All processors execute the same instruction at the same time
+  - Each with different data address\, etc\.
+- Simplifies synchronization
+- Reduced instruction control hardware
+- Works best for highly data\-parallel applications
 
-addi   x19\,x19\,8    // increment index to x
-
-addi   x20\,x20\,8    // increment index to y
-
-bltu   x19\,x5\,loop  // repeat if not done
-
-Vector RISC\-V code:
-
-fld       f0\,a\(x3\)    // load scalar a
-
-fld\.v     v0\,0\(x19\)   // load vector x
-
-fmul\.d\.vs v0\,v0\,f0    // vector\-scalar multiply
-
-fld\.v     v1\,0\(x20\)   // load vector y
-
-fadd\.d\.v  v1\,v1\,v0    // vector\-vector add
-
-fsd\.v     v1\,0\(x20\)   // store vector y
-
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# Vector vs. Scalar
-
-
-
-* Vector architectures and compilers
-  * Simplify data\-parallel programming
-  * Explicit statement of absence of loop\-carried dependences
-    * Reduced checking in hardware
-  * Regular access patterns benefit from interleaved and burst memory
-  * Avoid control hazards by avoiding loops
-* More general than ad\-hoc media extensions \(such as MMX\, SSE\)
-  * Better match with compiler technology
-
-
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# SIMD
-
-
-
-* Operate elementwise on vectors of data
-  * E\.g\.\, MMX and SSE instructions in x86
-    * Multiple data elements in 128\-bit wide registers
-* All processors execute the same instruction at the same time
-  * Each with different data address\, etc\.
-* Simplifies synchronization
-* Reduced instruction control hardware
-* Works best for highly data\-parallel applications
-
-
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# Vector vs. Multimedia Extensions
+### Vector vs. Multimedia Extensions
 
 Vector instructions have a variable vector width\, multimedia extensions have a fixed width
 
@@ -264,95 +193,66 @@ Vector units can be combination of pipelined and arrayed functional units:
 
 ![](img/Chapter_06_1.png)
 
-Chapter 6 — Parallel Processors from Client to Cloud —
+### Multithreading
 
-# Multithreading
+- Performing multiple threads of execution in parallel
+  - Replicate registers\, PC\, etc\.
+  - Fast switching between threads
+- Fine\-grain multithreading
+  - Switch threads after each cycle
+  - Interleave instruction execution
+  - If one thread stalls\, others are executed
+- Coarse\-grain multithreading
+  - Only switch on long stall \(e\.g\.\, L2\-cache miss\)
+  - Simplifies hardware\, but doesn’t hide short stalls \(eg\, data hazards\)
 
+## §6\.4 Hardware Multithreading
 
+### Simultaneous Multithreading
 
-* Performing multiple threads of execution in parallel
-  * Replicate registers\, PC\, etc\.
-  * Fast switching between threads
-* Fine\-grain multithreading
-  * Switch threads after each cycle
-  * Interleave instruction execution
-  * If one thread stalls\, others are executed
-* Coarse\-grain multithreading
-  * Only switch on long stall \(e\.g\.\, L2\-cache miss\)
-  * Simplifies hardware\, but doesn’t hide short stalls \(eg\, data hazards\)
+- In multiple\-issue dynamically scheduled processor
+  - Schedule instructions from multiple threads
+  - Instructions from independent threads execute when function units are available
+  - Within threads\, dependencies handled by scheduling and register renaming
+- Example: Intel Pentium\-4 HT
+  - Two threads: duplicated registers\, shared function units and caches
 
-
-§6\.4 Hardware Multithreading
-
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# Simultaneous Multithreading
-
-
-
-* In multiple\-issue dynamically scheduled processor
-  * Schedule instructions from multiple threads
-  * Instructions from independent threads execute when function units are available
-  * Within threads\, dependencies handled by scheduling and register renaming
-* Example: Intel Pentium\-4 HT
-  * Two threads: duplicated registers\, shared function units and caches
-
-
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# Multithreading Example
+### Multithreading Example
 
 ![](img/Chapter_06_2.png)
 
-Chapter 6 — Parallel Processors from Client to Cloud —
+### Future of Multithreading
 
-# Future of Multithreading
+- Will it survive? In what form?
+- Power considerations  simplified microarchitectures
+  - Simpler forms of multithreading
+- Tolerating cache\-miss latency
+  - Thread switch may be most effective
+- Multiple simple cores might share resources more effectively
 
+### Shared Memory
 
+- SMP: shared memory multiprocessor
+  - Hardware provides single physicaladdress space for all processors
+  - Synchronize shared variables using locks
+  - Memory access time
+    - UMA \(uniform\) vs\. NUMA \(nonuniform\)
 
-* Will it survive? In what form?
-* Power considerations  simplified microarchitectures
-  * Simpler forms of multithreading
-* Tolerating cache\-miss latency
-  * Thread switch may be most effective
-* Multiple simple cores might share resources more effectively
-
-
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# Shared Memory
-
-
-
-* SMP: shared memory multiprocessor
-  * Hardware provides single physicaladdress space for all processors
-  * Synchronize shared variables using locks
-  * Memory access time
-    * UMA \(uniform\) vs\. NUMA \(nonuniform\)
-
-
-§6\.5 Multicore and Other Shared Memory Multiprocessors
+## §6\.5 Multicore and Other Shared Memory Multiprocessors
 
 ![](img/Chapter_06_3.png)
 
-Chapter 6 — Parallel Processors from Client to Cloud —
+### Example: Sum Reduction
 
-# Example: Sum Reduction
-
-
-
-* Sum 64\,000 numbers on 64 processor UMA
-  * Each processor has ID: 0 ≤ Pn ≤ 63
-  * Partition 1000 numbers per processor
-  * Initial summation on each processor
-  * sum\[Pn\] = 0;  for \(i = 1000\*Pn;       i < 1000\*\(Pn\+1\); i \+= 1\)    sum\[Pn\] \+= A\[i\];
-* Now need to add these partial sums
-  * Reduction: divide and conquer
-  * Half the processors add pairs\, then quarter\, …
-  * Need to synchronize between reduction steps
-
-
-Chapter 6 — Parallel Processors from Client to Cloud —
+- Sum 64\,000 numbers on 64 processor UMA
+  - Each processor has ID: 0 ≤ Pn ≤ 63
+  - Partition 1000 numbers per processor
+  - Initial summation on each processor
+  - sum\[Pn\] = 0;  for \(i = 1000\*Pn;       i < 1000\*\(Pn\+1\); i \+= 1\)    sum\[Pn\] \+= A\[i\];
+- Now need to add these partial sums
+  - Reduction: divide and conquer
+  - Half the processors add pairs\, then quarter\, …
+  - Need to synchronize between reduction steps
 
 ![](img/Chapter_06_4.png)
 
@@ -376,28 +276,21 @@ if \(Pn < half\) sum\[Pn\] \+= sum\[Pn\+half\];
 
 while \(half > 1\);
 
-Chapter 6 — Parallel Processors from Client to Cloud —
+### History of GPUs
 
-# History of GPUs
+- Early video cards
+  - Frame buffer memory with address generation for video output
+- 3D graphics processing
+  - Originally high\-end computers \(e\.g\.\, SGI\)
+  - Moore’s Law  lower cost\, higher density
+  - 3D graphics cards for PCs and game consoles
+- Graphics Processing Units
+  - Processors oriented to 3D graphics tasks
+  - Vertex/pixel processing\, shading\, texture mapping\,rasterization
 
+## §6\.6 Introduction to Graphics Processing Units
 
-
-* Early video cards
-  * Frame buffer memory with address generation for video output
-* 3D graphics processing
-  * Originally high\-end computers \(e\.g\.\, SGI\)
-  * Moore’s Law  lower cost\, higher density
-  * 3D graphics cards for PCs and game consoles
-* Graphics Processing Units
-  * Processors oriented to 3D graphics tasks
-  * Vertex/pixel processing\, shading\, texture mapping\,rasterization
-
-
-§6\.6 Introduction to Graphics Processing Units
-
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# Graphics in the System
+### Graphics in the System
 
 ![](img/Chapter_06_5.png)
 
@@ -405,72 +298,51 @@ Chapter 6 — Parallel Processors from Client to Cloud —
 
 ![](img/Chapter_06_7.png)
 
-Chapter 6 — Parallel Processors from Client to Cloud —
+### GPU Architectures
 
-# GPU Architectures
+- Processing is highly data\-parallel
+  - GPUs are highly multithreaded
+  - Use thread switching to hide memory latency
+    - Less reliance on multi\-level caches
+  - Graphics memory is wide and high\-bandwidth
+- Trend toward general purpose GPUs
+  - Heterogeneous CPU/GPU systems
+  - CPU for sequential code\, GPU for parallel code
+- Programming languages/APIs
+  - DirectX\, OpenGL
+  - C for Graphics \(Cg\)\, High Level Shader Language \(HLSL\)
+  - Compute Unified Device Architecture \(CUDA\)
 
-
-
-* Processing is highly data\-parallel
-  * GPUs are highly multithreaded
-  * Use thread switching to hide memory latency
-    * Less reliance on multi\-level caches
-  * Graphics memory is wide and high\-bandwidth
-* Trend toward general purpose GPUs
-  * Heterogeneous CPU/GPU systems
-  * CPU for sequential code\, GPU for parallel code
-* Programming languages/APIs
-  * DirectX\, OpenGL
-  * C for Graphics \(Cg\)\, High Level Shader Language \(HLSL\)
-  * Compute Unified Device Architecture \(CUDA\)
-
-
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# Example: NVIDIA Tesla
+### Example: NVIDIA Tesla
 
 Multiple SIMD processors\, each as shown:
 
 ![](img/Chapter_06_8.png)
 
-Chapter 6 — Parallel Processors from Client to Cloud —
+- SIMD Processor: 16 SIMD lanes
+- SIMD instruction
+  - Operates on 32 element wide threads
+  - Dynamically scheduled on 16\-wide processor over 2 cycles
+- 32K x 32\-bit registers spread across lanes
+  - 64 registers per thread context
 
-
-
-* SIMD Processor: 16 SIMD lanes
-* SIMD instruction
-  * Operates on 32 element wide threads
-  * Dynamically scheduled on 16\-wide processor over 2 cycles
-* 32K x 32\-bit registers spread across lanes
-  * 64 registers per thread context
-
-
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# GPU Memory Structures
+### GPU Memory Structures
 
 ![](img/Chapter_06_9.png)
 
-Chapter 6 — Parallel Processors from Client to Cloud —
+### Classifying GPUs
 
-# Classifying GPUs
-
-
-
-* Don’t fit nicely into SIMD/MIMD model
-  * Conditional execution in a thread allows an illusion of MIMD
-    * But with performance degredation
-    * Need to write general purpose code with care
-
+- Don’t fit nicely into SIMD/MIMD model
+  - Conditional execution in a thread allows an illusion of MIMD
+    - But with performance degredation
+    - Need to write general purpose code with care
 
 |  | Static: Discoveredat Compile Time | Dynamic: Discovered at Runtime |
 | :-: | :-: | :-: |
 | Instruction\-Level Parallelism | VLIW | Superscalar |
 | Data\-Level Parallelism | SIMD or Vector | __Tesla Multiprocessor__ |
 
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# Putting GPUs into Perspective
+### Putting GPUs into Perspective
 
 | Feature | Multicore with SIMD | GPU |
 | :-: | :-: | :-: |
@@ -485,96 +357,67 @@ Chapter 6 — Parallel Processors from Client to Cloud —
 | Demand paging | Yes | No |
 | Cache coherent | Yes | No |
 
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# Guide to GPU Terms
+### Guide to GPU Terms
 
 ![](img/Chapter_06_10.png)
 
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# Message Passing
+### Message Passing
 
 Each processor has private physical address space
 
 Hardware sends/receives messages between processors
 
-§6\.8 Clusters\, WSC\, and Other Message\-Passing MPs
+## §6\.8 Clusters\, WSC\, and Other Message\-Passing MPs
 
 ![](img/Chapter_06_11.png)
 
-Chapter 6 — Parallel Processors from Client to Cloud —
+### Loosely Coupled Clusters
 
-# Loosely Coupled Clusters
+- Network of independent computers
+  - Each has private memory and OS
+  - Connected using I/O system
+    - E\.g\.\, Ethernet/switch\, Internet
+- Suitable for applications with independent tasks
+  - Web servers\, databases\, simulations\, …
+- High availability\, scalable\, affordable
+- Problems
+  - Administration cost \(prefer virtual machines\)
+  - Low interconnect bandwidth
+    - c\.f\. processor/memory bandwidth on an SMP
 
+### Sum Reduction (Again)
 
+- Sum 64\,000 on 64 processors
+- First distribute 1000 numbers to each
+  - The do partial sums
+  - sum = 0;for \(i = 0; i<1000; i \+= 1\)  sum \+= AN\[i\];
+- Reduction
+  - Half the processors send\, other half receive and add
+  - The quarter send\, quarter receive and add\, …
 
-* Network of independent computers
-  * Each has private memory and OS
-  * Connected using I/O system
-    * E\.g\.\, Ethernet/switch\, Internet
-* Suitable for applications with independent tasks
-  * Web servers\, databases\, simulations\, …
-* High availability\, scalable\, affordable
-* Problems
-  * Administration cost \(prefer virtual machines\)
-  * Low interconnect bandwidth
-    * c\.f\. processor/memory bandwidth on an SMP
+- Given send\(\) and receive\(\) operations
+  - limit = 64; half = 64;/\* 64 processors \*/do  half = \(half\+1\)/2; /\* send vs\. receive                        dividing line \*/  if \(Pn >= half && Pn < limit\)     <span style="color:#ff0000">send\(Pn \- half\, sum\)</span> ;  if \(Pn < \(limit/2\)\)    sum \+=  <span style="color:#ff0000">receive\(\)</span> ;  limit = half; /\* upper limit of senders \*/while \(half > 1\); /\* exit with final sum \*/
+  - Send/receive also provide synchronization
+  - Assumes send/receive take similar time to addition
 
+### Grid Computing
 
-Chapter 6 — Parallel Processors from Client to Cloud —
+- Separate computers interconnected by long\-haul networks
+  - E\.g\.\, Internet connections
+  - Work units farmed out\, results sent back
+- Can make use of idle time on PCs
+  - E\.g\.\, SETI@home\, World Community Grid
 
-# Sum Reduction (Again)
+### Interconnection Networks
 
-
-
-* Sum 64\,000 on 64 processors
-* First distribute 1000 numbers to each
-  * The do partial sums
-  * sum = 0;for \(i = 0; i<1000; i \+= 1\)  sum \+= AN\[i\];
-* Reduction
-  * Half the processors send\, other half receive and add
-  * The quarter send\, quarter receive and add\, …
-
-
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-
-
-* Given send\(\) and receive\(\) operations
-  * limit = 64; half = 64;/\* 64 processors \*/do  half = \(half\+1\)/2; /\* send vs\. receive                        dividing line \*/  if \(Pn >= half && Pn < limit\)     <span style="color:#ff0000">send\(Pn \- half\, sum\)</span> ;  if \(Pn < \(limit/2\)\)    sum \+=  <span style="color:#ff0000">receive\(\)</span> ;  limit = half; /\* upper limit of senders \*/while \(half > 1\); /\* exit with final sum \*/
-  * Send/receive also provide synchronization
-  * Assumes send/receive take similar time to addition
-
-
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# Grid Computing
-
-
-
-* Separate computers interconnected by long\-haul networks
-  * E\.g\.\, Internet connections
-  * Work units farmed out\, results sent back
-* Can make use of idle time on PCs
-  * E\.g\.\, SETI@home\, World Community Grid
-
-
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# Interconnection Networks
-
-
-
-* Network topologies
-  * Arrangements of processors\, switches\, and links
-
+- Network topologies
+  - Arrangements of processors\, switches\, and links
 
 ![](img/Chapter_06_12.png)
 
 ![](img/Chapter_06_13.png)
 
-§6\.9 Introduction to Multiprocessor Network Topologies
+## §6\.9 Introduction to Multiprocessor Network Topologies
 
 ![](img/Chapter_06_14.png)
 
@@ -582,82 +425,58 @@ Chapter 6 — Parallel Processors from Client to Cloud —
 
 ![](img/Chapter_06_16.png)
 
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# Multistage Networks
+### Multistage Networks
 
 ![](img/Chapter_06_17.png)
 
-Chapter 6 — Parallel Processors from Client to Cloud —
+### Network Characteristics
 
-# Network Characteristics
+- Performance
+  - Latency per message \(unloaded network\)
+  - Throughput
+    - Link bandwidth
+    - Total network bandwidth
+    - Bisection bandwidth
+  - Congestion delays \(depending on traffic\)
+- Cost
+- Power
+- Routability in silicon
 
+### Parallel Benchmarks
 
+- Linpack: matrix linear algebra
+- SPECrate: parallel run of SPEC CPU programs
+  - Job\-level parallelism
+- SPLASH: Stanford Parallel Applications for Shared Memory
+  - Mix of kernels and applications\, strong scaling
+- NAS \(NASA Advanced Supercomputing\) suite
+  - computational fluid dynamics kernels
+- PARSEC \(Princeton Application Repository for Shared Memory Computers\) suite
+  - Multithreaded applications using Pthreads and OpenMP
 
-* Performance
-  * Latency per message \(unloaded network\)
-  * Throughput
-    * Link bandwidth
-    * Total network bandwidth
-    * Bisection bandwidth
-  * Congestion delays \(depending on traffic\)
-* Cost
-* Power
-* Routability in silicon
+## §6\.11 Multiprocessor Benchmarks and Performance Models
 
+### Code or Applications?
 
-Chapter 6 — Parallel Processors from Client to Cloud —
+- Traditional benchmarks
+  - Fixed code and data sets
+- Parallel programming is evolving
+  - Should algorithms\, programming languages\, and tools be part of the system?
+  - Compare systems\, provided they implement a given application
+  - E\.g\.\, Linpack\, Berkeley Design Patterns
+- Would foster innovation in approaches to parallelism
 
-# Parallel Benchmarks
+### Modeling Performance
 
+- Assume performance metric of interest is achievable GFLOPs/sec
+  - Measured using computational kernels from Berkeley Design Patterns
+- Arithmetic intensity of a kernel
+  - FLOPs per byte of memory accessed
+- For a given computer\, determine
+  - Peak GFLOPS \(from data sheet\)
+  - Peak memory bytes/sec \(using Stream benchmark\)
 
-
-* Linpack: matrix linear algebra
-* SPECrate: parallel run of SPEC CPU programs
-  * Job\-level parallelism
-* SPLASH: Stanford Parallel Applications for Shared Memory
-  * Mix of kernels and applications\, strong scaling
-* NAS \(NASA Advanced Supercomputing\) suite
-  * computational fluid dynamics kernels
-* PARSEC \(Princeton Application Repository for Shared Memory Computers\) suite
-  * Multithreaded applications using Pthreads and OpenMP
-
-
-§6\.11 Multiprocessor Benchmarks and Performance Models
-
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# Code or Applications?
-
-
-
-* Traditional benchmarks
-  * Fixed code and data sets
-* Parallel programming is evolving
-  * Should algorithms\, programming languages\, and tools be part of the system?
-  * Compare systems\, provided they implement a given application
-  * E\.g\.\, Linpack\, Berkeley Design Patterns
-* Would foster innovation in approaches to parallelism
-
-
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# Modeling Performance
-
-
-
-* Assume performance metric of interest is achievable GFLOPs/sec
-  * Measured using computational kernels from Berkeley Design Patterns
-* Arithmetic intensity of a kernel
-  * FLOPs per byte of memory accessed
-* For a given computer\, determine
-  * Peak GFLOPS \(from data sheet\)
-  * Peak memory bytes/sec \(using Stream benchmark\)
-
-
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# Roofline Diagram
+### Roofline Diagram
 
 ![](img/Chapter_06_18.png)
 
@@ -667,255 +486,190 @@ Attainable GPLOPs/sec
 
 = Max \( Peak Memory BW × Arithmetic Intensity\, Peak FP Performance \)
 
-Chapter 6 — Parallel Processors from Client to Cloud —
-
 ![](img/Chapter_06_20.png)
 
 Attainable GPLOPs/sec
 
 = Max \( Peak Memory BW × Arithmetic Intensity\, Peak FP Performance \)
 
-Chapter 6 — Parallel Processors from Client to Cloud —
+### Comparing Systems
 
-# Comparing Systems
-
-
-
-* Example: Opteron X2 vs\. Opteron X4
-  * 2\-core vs\. 4\-core\, 2× FP performance/core\, 2\.2GHz vs\. 2\.3GHz
-  * Same memory system
-
+- Example: Opteron X2 vs\. Opteron X4
+  - 2\-core vs\. 4\-core\, 2× FP performance/core\, 2\.2GHz vs\. 2\.3GHz
+  - Same memory system
 
 ![](img/Chapter_06_21.png)
 
+- To get higher performance on X4 than X2
+  - Need high arithmetic intensity
+  - Or working set must fit in X4’s 2MB L\-3 cache
 
+### Optimizing Performance
 
-* To get higher performance on X4 than X2
-  * Need high arithmetic intensity
-  * Or working set must fit in X4’s 2MB L\-3 cache
-
-
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# Optimizing Performance
-
-
-
-* Optimize FP performance
-  * Balance adds & multiplies
-  * Improve superscalar ILP and use of SIMD instructions
-* Optimize memory usage
-  * Software prefetch
-    * Avoid load stalls
-  * Memory affinity
-    * Avoid non\-local data accesses
-
+- Optimize FP performance
+  - Balance adds & multiplies
+  - Improve superscalar ILP and use of SIMD instructions
+- Optimize memory usage
+  - Software prefetch
+    - Avoid load stalls
+  - Memory affinity
+    - Avoid non\-local data accesses
 
 ![](img/Chapter_06_22.png)
-
-Chapter 6 — Parallel Processors from Client to Cloud —
 
 Choice of optimization depends on arithmetic intensity of code
 
 ![](img/Chapter_06_23.png)
 
+- Arithmetic intensity is not always fixed
+  - May scale with problem size
+  - Caching reduces memory accesses
+    - Increases arithmetic intensity
 
-
-* Arithmetic intensity is not always fixed
-  * May scale with problem size
-  * Caching reduces memory accesses
-    * Increases arithmetic intensity
-
-
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# TPUv3 vs Volta for DNN
+### TPUv3 vs Volta for DNN
 
 ![](img/Chapter_06_24.png)
 
-Chapter 6 — Parallel Processors from Client to Cloud —
+### TPUv3
 
-# TPUv3
-
-
-
-* Core Sequencer:
-  * VLIW with software\-managed memory
-    * 322\-bit VLIW w/8 operations:
-      * 2 x scalar ALU\, 2 x vector ALU\, vector load and store\, 2 x queue operations for matrix multiply/transpose unit
-
+- Core Sequencer:
+  - VLIW with software\-managed memory
+    - 322\-bit VLIW w/8 operations:
+      - 2 x scalar ALU\, 2 x vector ALU\, vector load and store\, 2 x queue operations for matrix multiply/transpose unit
 
 ![](img/Chapter_06_25.png)
 
-Chapter 6 — Parallel Processors from Client to Cloud —
+- Vector Processing Unit \(VPU\)
+  - Uses data\-level parallelism \(2D matrix and vector functional units\) and instruction\-level parallelism \(8 operations per instruction\)
+  - Uses on\-chip vector memory \(Vmem\) with 32K 128 x 32\-bit elements \(16 MiB\)
+  - 32 2D vector registers \(Vregs\) that each contain 128 x 8 32\-bit elements \(4 KiB\)
+- MXU
+  - Produces 32\-bit FP products from 16\-bit FP inputs that accumulate in 32 bits
+  - Two MXUs per TensorCore
+- The Transpose Reduction Permute Unit
+  - 128x128 matrix transposes\, reductions\, and permutations
 
-
-
-* Vector Processing Unit \(VPU\)
-  * Uses data\-level parallelism \(2D matrix and vector functional units\) and instruction\-level parallelism \(8 operations per instruction\)
-  * Uses on\-chip vector memory \(Vmem\) with 32K 128 x 32\-bit elements \(16 MiB\)
-  * 32 2D vector registers \(Vregs\) that each contain 128 x 8 32\-bit elements \(4 KiB\)
-* MXU
-  * Produces 32\-bit FP products from 16\-bit FP inputs that accumulate in 32 bits
-  * Two MXUs per TensorCore
-* The Transpose Reduction Permute Unit
-  * 128x128 matrix transposes\, reductions\, and permutations
-
-
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# TPUv3 vs Volta for DNN
+### TPUv3 vs Volta for DNN
 
 ![](img/Chapter_06_26.png)
 
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# Speedup of TPUv3 vs Volta
+### Speedup of TPUv3 vs Volta
 
 ![](img/Chapter_06_27.png)
 
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# TPUv3 and Volta Scalability
+### TPUv3 and Volta Scalability
 
 ![](img/Chapter_06_28.png)
 
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# Multi-threading DGEMM
+### Multi-threading DGEMM
 
 Use OpenMP:
 
-1\.	\#include \<x86intrin\.h>
+1\. \#include \<x86intrin\.h>
 
-2\.	\#define UNROLL \(4\)
+2\. \#define UNROLL \(4\)
 
-3\.	\#define BLOCKSIZE 32
+3\. \#define BLOCKSIZE 32
 
-4\.	void do\_block \(int n\, int si\, int sj\, int sk\,
+4\. void do\_block \(int n\, int si\, int sj\, int sk\,
 
-5\.	               double \*A\, double \*B\, double \*C\)
+5\.                double \*A\, double \*B\, double \*C\)
 
-6\.	\{
+6\. \{
 
-7\.	  for \( int i = si; i < si\+BLOCKSIZE; i\+=UNROLL\*8 \)
+7\.   for \( int i = si; i < si\+BLOCKSIZE; i\+=UNROLL\*8 \)
 
-8\.	    for \( int j = sj; j < sj\+BLOCKSIZE; j\+\+ \) \{
+8\.     for \( int j = sj; j < sj\+BLOCKSIZE; j\+\+ \) \{
 
-9\.	      \_\_m512d c\[UNROLL\];
+9\.       \_\_m512d c\[UNROLL\];
 
-10\.	      for \(int r=0;r<UNROLL;r\+\+\)
+10\.       for \(int r=0;r<UNROLL;r\+\+\)
 
-11\.	        c\[r\] =  \_mm512\_load\_pd\(C\+i\+r\*8\+j\*n\); //\[ UNROLL\];
+11\.         c\[r\] =  \_mm512\_load\_pd\(C\+i\+r\*8\+j\*n\); //\[ UNROLL\];
 
 12\.
 
-13\.	      for\( int k = sk; k < sk\+BLOCKSIZE; k\+\+ \)
+13\.       for\( int k = sk; k < sk\+BLOCKSIZE; k\+\+ \)
 
-14\.	      \{
+14\.       \{
 
-15\.	        \_\_m512d bb = \_mm512\_broadcastsd\_pd\(\_mm\_load\_sd\(B\+j\*n\+k\)\);
+15\.         \_\_m512d bb = \_mm512\_broadcastsd\_pd\(\_mm\_load\_sd\(B\+j\*n\+k\)\);
 
-16\.	        for \(int r=0;r<UNROLL;r\+\+\)
+16\.         for \(int r=0;r<UNROLL;r\+\+\)
 
-17\.	          c\[r\] = \_mm512\_fmadd\_pd\(\_mm512\_load\_pd\(A\+n\*k\+r\*8\+i\)\, bb\, c\[r\]\);
+17\.           c\[r\] = \_mm512\_fmadd\_pd\(\_mm512\_load\_pd\(A\+n\*k\+r\*8\+i\)\, bb\, c\[r\]\);
 
-18\.	       \}
+18\.        \}
 
 19\.
 
-20\.	     for \(int r=0;r<UNROLL;r\+\+\)
+20\.      for \(int r=0;r<UNROLL;r\+\+\)
 
-21\.	       \_mm512\_store\_pd\(C\+i\+r\*8\+j\*n\, c\[r\]\);
+21\.        \_mm512\_store\_pd\(C\+i\+r\*8\+j\*n\, c\[r\]\);
 
-22\.	     \}
+22\.      \}
 
-23\.	  \}
+23\.   \}
 
 24\.
 
-25\.	void dgemm \(int n\, double\* A\, double\* B\, double\* C\)
+25\. void dgemm \(int n\, double\* A\, double\* B\, double\* C\)
 
-26\.	\{
+26\. \{
 
-27\.	\#pragma omp parallel for
+27\. \#pragma omp parallel for
 
-28\.	  for \( int sj = 0; sj < n; sj \+= BLOCKSIZE \)
+28\.   for \( int sj = 0; sj < n; sj \+= BLOCKSIZE \)
 
-29\.	    for \( int si = 0; si < n; si \+= BLOCKSIZE \)
+29\.     for \( int si = 0; si < n; si \+= BLOCKSIZE \)
 
-30\.	      for \( int sk = 0; sk < n; sk \+= BLOCKSIZE \)
+30\.       for \( int sk = 0; sk < n; sk \+= BLOCKSIZE \)
 
-31\.	        do\_block\(n\, si\, sj\, sk\, A\, B\, C\);
+31\.         do\_block\(n\, si\, sj\, sk\, A\, B\, C\);
 
-32\.	\}
+32\. \}
 
-§6\.13 Going Faster:  Multiple Processors and Matrix Multiply
+## §6\.13 Going Faster:  Multiple Processors and Matrix Multiply
 
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# Multithreaded DGEMM
+### Multithreaded DGEMM
 
 ![](img/Chapter_06_29.png)
 
-Chapter 6 — Parallel Processors from Client to Cloud —
-
 ![](img/Chapter_06_30.png)
 
-Chapter 6 — Parallel Processors from Client to Cloud —
+### Fallacies
 
-# Fallacies
+- Amdahl’s Law doesn’t apply to parallel computers
+  - Since we can achieve linear speedup
+  - But only on applications with weak scaling
+- Peak performance tracks observed performance
+  - Marketers like this approach\!
+  - But compare Xeon with others in example
+  - Need to be aware of bottlenecks
 
+## §6\.14 Fallacies and Pitfalls
 
+- Not developing the software to take advantage of\, or optimize for\, a novel architecture
+  - Unexpected bottlenecks\, e\.g\. serialization of page tables
+  - Usability for DSAs
+- You can get good vector performance without proving memory bandwidth
+  - Beware of the sloping part of the roofline
 
-* Amdahl’s Law doesn’t apply to parallel computers
-  * Since we can achieve linear speedup
-  * But only on applications with weak scaling
-* Peak performance tracks observed performance
-  * Marketers like this approach\!
-  * But compare Xeon with others in example
-  * Need to be aware of bottlenecks
+### Pitfalls
 
+- Not developing the software to take account of a multiprocessor architecture
+  - Example: using a single lock for a shared composite resource
+    - Serializes accesses\, even if they could be done in parallel
+    - Use finer\-granularity locking
 
-§6\.14 Fallacies and Pitfalls
-
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-
-
-* Not developing the software to take advantage of\, or optimize for\, a novel architecture
-  * Unexpected bottlenecks\, e\.g\. serialization of page tables
-  * Usability for DSAs
-* You can get good vector performance without proving memory bandwidth
-  * Beware of the sloping part of the roofline
-
-
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# Pitfalls
-
+- Assuming the ISA completely hides the physical implementation properties
+  - Attacker can examine state changes caused by instructions that are rolled back or performance differences caused by intermixing of instructions from different programs on the same server
+    - Speculation
+    - Caching
+    - Hardware multithreading
 
 
-* Not developing the software to take account of a multiprocessor architecture
-  * Example: using a single lock for a shared composite resource
-    * Serializes accesses\, even if they could be done in parallel
-    * Use finer\-granularity locking
-
-
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-
-
-* Assuming the ISA completely hides the physical implementation properties
-  * Attacker can examine state changes caused by instructions that are rolled back or performance differences caused by intermixing of instructions from different programs on the same server
-    * Speculation
-    * Caching
-    * Hardware multithreading
-
-
-Chapter 6 — Parallel Processors from Client to Cloud —
-
-# Concluding Remarks
+### Concluding Remarks
 
 
 
@@ -927,15 +681,13 @@ Chapter 6 — Parallel Processors from Client to Cloud —
 * Performance per dollar and performance per Joule drive both mobile and WSC
 
 
-§6\.15 Concluding Remarks
+## §6\.15 Concluding Remarks
 
-Chapter 6 — Parallel Processors from Client to Cloud —
 
-# Concluding Remarks (con’t)
+### Concluding Remarks (con’t)
 
 SIMD and vector operations match multimedia applications and are easy to program
 
 ![](img/Chapter_06_31.png)
 
-Chapter 6 — Parallel Processors from Client to Cloud —
 

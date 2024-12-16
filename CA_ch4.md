@@ -7,11 +7,11 @@
 - [Chapter 5](CA_ch5.md)
 - [Chapter 6](CA_ch6.md)
 
-# The Processor
+## The Processor
 
-# Introduction
+### Introduction
 
-§4\.1 Introduction
+## §4\.1 Introduction
 
 
 
@@ -29,9 +29,8 @@
   * Control transfer: beq
 
 
-Chapter 4 — The Processor —
 
-# Instruction Execution
+### Instruction Execution
 
 
 
@@ -46,15 +45,13 @@ Chapter 4 — The Processor —
   * PC  target address or PC \+ 4
 
 
-Chapter 4 — The Processor —
 
-# CPU Overview
+### CPU Overview
 
 ![](img/Chapter_04_0.png)
 
-Chapter 4 — The Processor —
 
-# Multiplexers
+### Multiplexers
 
 
 
@@ -64,15 +61,13 @@ Chapter 4 — The Processor —
 
 ![](img/Chapter_04_1.png)
 
-Chapter 4 — The Processor —
 
-# Control
+### Control
 
 ![](img/Chapter_04_2.png)
 
-Chapter 4 — The Processor —
 
-# Logic Design Basics
+### Logic Design Basics
 
 
 
@@ -87,11 +82,10 @@ Chapter 4 — The Processor —
   * Store information
 
 
-§4\.2 Logic Design Conventions
+## §4\.2 Logic Design Conventions
 
-Chapter 4 — The Processor —
 
-# Combinational Elements
+### Combinational Elements
 
 
 
@@ -103,9 +97,8 @@ Chapter 4 — The Processor —
   * Y = S ? I1 : I0
 
 
-Chapter 4 — The Processor —
 
-# Sequential Elements
+### Sequential Elements
 
 
 
@@ -114,7 +107,6 @@ Chapter 4 — The Processor —
   * Edge\-triggered: update when Clk changes from 0 to 1
 
 
-Chapter 4 — The Processor —
 
 
 
@@ -123,9 +115,8 @@ Chapter 4 — The Processor —
   * Used when stored value is required later
 
 
-Chapter 4 — The Processor —
 
-# Clocking Methodology
+### Clocking Methodology
 
 
 
@@ -139,9 +130,8 @@ Chapter 4 — The Processor —
 
 ![](img/Chapter_04_4.png)
 
-Chapter 4 — The Processor —
 
-# Building a Datapath
+### Building a Datapath
 
 
 
@@ -152,19 +142,17 @@ Chapter 4 — The Processor —
   * Refining the overview design
 
 
-§4\.3 Building a Datapath
+## §4\.3 Building a Datapath
 
-Chapter 4 — The Processor —
 
-# Instruction Fetch
+### Instruction Fetch
 
 ![](img/Chapter_04_5.png)
 
 Increment by 4 for next instruction
 
-Chapter 4 — The Processor —
 
-# R-Format Instructions
+### R-Format Instructions
 
 Read two register operands
 
@@ -174,9 +162,8 @@ Write register result
 
 ![](img/Chapter_04_6.png)
 
-Chapter 4 — The Processor —
 
-# Load/Store Instructions
+### Load/Store Instructions
 
 
 
@@ -189,9 +176,8 @@ Chapter 4 — The Processor —
 
 ![](img/Chapter_04_7.png)
 
-Chapter 4 — The Processor —
 
-# Branch Instructions
+### Branch Instructions
 
 
 
@@ -204,7 +190,6 @@ Chapter 4 — The Processor —
   * Add to PC value
 
 
-Chapter 4 — The Processor —
 
 ![](img/Chapter_04_8.png)
 
@@ -212,9 +197,8 @@ Justre\-routes wires
 
 Sign\-bit wire replicated
 
-Chapter 4 — The Processor —
 
-# Composing the Elements
+### Composing the Elements
 
 
 
@@ -224,21 +208,18 @@ Chapter 4 — The Processor —
 * Use multiplexers where alternate data sources are used for different instructions
 
 
-Chapter 4 — The Processor —
 
-# R-Type/Load/Store Datapath
+### R-Type/Load/Store Datapath
 
 ![](img/Chapter_04_9.png)
 
-Chapter 4 — The Processor —
 
-# Full Datapath
+### Full Datapath
 
 ![](img/Chapter_04_10.png)
 
-Chapter 4 — The Processor —
 
-# ALU Control
+### ALU Control
 
 
 
@@ -248,7 +229,7 @@ Chapter 4 — The Processor —
   * R\-type: F depends on opcode
 
 
-§4\.4 A Simple Implementation Scheme
+## §4\.4 A Simple Implementation Scheme
 
 | ALU control | Function |
 | :-: | :-: |
@@ -257,7 +238,6 @@ Chapter 4 — The Processor —
 | 0010 | add |
 | 0110 | subtract |
 
-Chapter 4 — The Processor —
 
 
 
@@ -275,9 +255,8 @@ Chapter 4 — The Processor —
 |  |  | AND | 100100 | AND | 0000 |
 |  |  | OR | 100101 | OR | 0001 |
 
-Chapter 4 — The Processor —
 
-# The Main Control Unit
+### The Main Control Unit
 
 Control signals derived from instruction
 
@@ -285,33 +264,28 @@ Control signals derived from instruction
 
 ![](img/Chapter_04_12.png)
 
-Chapter 4 — The Processor —
 
-# Datapath With Control
+### Datapath With Control
 
 ![](img/Chapter_04_13.png)
 
-Chapter 4 — The Processor —
 
-# R-Type Instruction
+### R-Type Instruction
 
 ![](img/Chapter_04_14.png)
 
-Chapter 4 — The Processor —
 
-# Load Instruction
+### Load Instruction
 
 ![](img/Chapter_04_15.png)
 
-Chapter 4 — The Processor —
 
-# Branch-on-Equal Instruction
+### Branch-on-Equal Instruction
 
 ![](img/Chapter_04_16.png)
 
-Chapter 4 — The Processor —
 
-# Performance Issues
+### Performance Issues
 
 
 
@@ -324,9 +298,8 @@ Chapter 4 — The Processor —
 * We will improve performance by pipelining
 
 
-Chapter 4 — The Processor —
 
-# Pipelining Analogy
+### Pipelining Analogy
 
 
 
@@ -334,7 +307,7 @@ Chapter 4 — The Processor —
   * Parallelism improves performance
 
 
-§4\.6 An Overview of Pipelining
+## §4\.6 An Overview of Pipelining
 
 ![](img/Chapter_04_17.png)
 
@@ -346,9 +319,8 @@ Chapter 4 — The Processor —
   * Speedup= 2n/0\.5n \+ 1\.5 ≈ 4= number of stages
 
 
-Chapter 4 — The Processor —
 
-# RISC-V Pipeline
+### RISC-V Pipeline
 
 
 
@@ -360,9 +332,8 @@ Chapter 4 — The Processor —
   * WB: Write result back to register
 
 
-Chapter 4 — The Processor —
 
-# Pipeline Performance
+### Pipeline Performance
 
 
 
@@ -379,7 +350,6 @@ Chapter 4 — The Processor —
 | R\-format | 200ps | 100 ps | 200ps |  | 100 ps | 600ps |
 | beq | 200ps | 100 ps | 200ps |  |  | 500ps |
 
-Chapter 4 — The Processor —
 
 Single\-cycle \(Tc= 800ps\)
 
@@ -387,9 +357,8 @@ Single\-cycle \(Tc= 800ps\)
 
 Pipelined \(Tc= 200ps\)
 
-Chapter 4 — The Processor —
 
-# Pipeline Speedup
+### Pipeline Speedup
 
 
 
@@ -401,9 +370,8 @@ Chapter 4 — The Processor —
   * Latency \(time for each instruction\) does not decrease
 
 
-Chapter 4 — The Processor —
 
-# Pipelining and ISA Design
+### Pipelining and ISA Design
 
 
 
@@ -417,9 +385,8 @@ Chapter 4 — The Processor —
     * Can calculate address in 3rd stage\, access memory in 4th stage
 
 
-Chapter 4 — The Processor —
 
-# Hazards
+### Hazards
 
 
 
@@ -432,9 +399,8 @@ Chapter 4 — The Processor —
   * Deciding on control action depends on previous instruction
 
 
-Chapter 4 — The Processor —
 
-# Structural Hazards
+### Structural Hazards
 
 
 
@@ -447,9 +413,8 @@ Chapter 4 — The Processor —
   * Or separate instruction/data caches
 
 
-Chapter 4 — The Processor —
 
-# Data Hazards
+### Data Hazards
 
 
 
@@ -459,9 +424,8 @@ Chapter 4 — The Processor —
 
 ![](img/Chapter_04_19.png)
 
-Chapter 4 — The Processor —
 
-# Forwarding (aka Bypassing)
+### Forwarding (aka Bypassing)
 
 
 
@@ -472,9 +436,8 @@ Chapter 4 — The Processor —
 
 ![](img/Chapter_04_20.png)
 
-Chapter 4 — The Processor —
 
-# Load-Use Data Hazard
+### Load-Use Data Hazard
 
 
 
@@ -485,45 +448,30 @@ Chapter 4 — The Processor —
 
 ![](img/Chapter_04_21.png)
 
-Chapter 4 — The Processor —
 
-# Code Scheduling to Avoid Stalls
+### Code Scheduling to Avoid Stalls
 
 Reorder code to avoid use of load result in the next instruction
 
 C code for a = b \+ e; c = b \+ f;
+```assembly
+ld      x1, 0(x0)
+ld      x2, 8(x0)
+add     x3, x1, x2
+sd      x3, 24(x0)
+ld      x4, 16(x0)
+add     x5, x1, x4
+sd      x5, 32(x0)
+ld      x1, 0(x0)
+ld      x2, 8(x0)
+ld      x4, 16(x0)
+add     x3, x1, x2
+sd      x3, 24(x0)
+add     x5, x1, x4
+sd      x5, 32(x0)
+```
 
-ld		x1\, 0\(x0\)
-
-ld		 <span style="color:#ff0000">x2</span> \, 8\(x0\)
-
-add		x3\, x1\,  <span style="color:#ff0000">x2</span>
-
-sd		x3\, 24\(x0\)
-
-ld		 <span style="color:#ff0000">x4</span> \, 16\(x0\)
-
-add		x5\, x1\,  <span style="color:#ff0000">x4</span>
-
-sd		x5\, 32\(x0\)
-
-ld		x1\, 0\(x0\)
-
-ld		 <span style="color:#ff0000">x2</span> \, 8\(x0\)
-
-ld		 <span style="color:#ff0000">x4</span> \, 16\(x0\)
-
-add		x3\, x1\,  <span style="color:#ff0000">x2</span>
-
-sd		x3\, 24\(x0\)
-
-add		x5\, x1\,  <span style="color:#ff0000">x4</span>
-
-sd		x5\, 32\(x0\)
-
-Chapter 4 — The Processor —
-
-# Control Hazards
+### Control Hazards
 
 
 
@@ -536,17 +484,15 @@ Chapter 4 — The Processor —
   * Add hardware to do it in ID stage
 
 
-Chapter 4 — The Processor —
 
-# Stall on Branch
+### Stall on Branch
 
 Wait until branch outcome determined before fetching next instruction
 
 ![](img/Chapter_04_22.png)
 
-Chapter 4 — The Processor —
 
-# Branch Prediction
+### Branch Prediction
 
 
 
@@ -559,9 +505,8 @@ Chapter 4 — The Processor —
   * Fetch instruction after branch\, with no delay
 
 
-Chapter 4 — The Processor —
 
-# More-Realistic Branch Prediction
+### More-Realistic Branch Prediction
 
 
 
@@ -577,9 +522,8 @@ Chapter 4 — The Processor —
     * When wrong\, stall while re\-fetching\, and update history
 
 
-Chapter 4 — The Processor —
 
-# Pipeline Summary
+### Pipeline Summary
 
 
 
@@ -591,19 +535,17 @@ Chapter 4 — The Processor —
 * Instruction set design affects complexity of pipeline implementation
 
 
-Chapter 4 — The Processor —
 
-# RISC-V Pipelined Datapath
+### RISC-V Pipelined Datapath
 
 ![](img/Chapter_04_23.png)
 
-§4\.7 Pipelined Datapath and Control
+## §4\.7 Pipelined Datapath and Control
 
 Right\-to\-left flow leads to hazards
 
-Chapter 4 — The Processor —
 
-# Pipeline registers
+### Pipeline registers
 
 
 
@@ -613,9 +555,8 @@ Chapter 4 — The Processor —
 
 ![](img/Chapter_04_24.png)
 
-Chapter 4 — The Processor —
 
-# Pipeline Operation
+### Pipeline Operation
 
 
 
@@ -628,91 +569,77 @@ Chapter 4 — The Processor —
 * We’ll look at “single\-clock\-cycle” diagrams for load & store
 
 
-Chapter 4 — The Processor —
 
-# IF for Load, Store, …
+### IF for Load, Store, …
 
 ![](img/Chapter_04_25.png)
 
-Chapter 4 — The Processor —
 
 ![](img/Chapter_04_26.png)
 
-Chapter 4 — The Processor —
 
-# EX for Load
+### EX for Load
 
 ![](img/Chapter_04_27.png)
 
-Chapter 4 — The Processor —
 
-# MEM for Load
+### MEM for Load
 
 ![](img/Chapter_04_28.png)
 
-Chapter 4 — The Processor —
 
-# WB for Load
+### WB for Load
 
 ![](img/Chapter_04_29.png)
 
 Wrongregisternumber
 
-Chapter 4 — The Processor —
 
-# Corrected Datapath for Load
+### Corrected Datapath for Load
 
 ![](img/Chapter_04_30.png)
 
-Chapter 4 — The Processor —
 
-# EX for Store
+### EX for Store
 
 ![](img/Chapter_04_31.png)
 
-Chapter 4 — The Processor —
 
-# MEM for Store
+### MEM for Store
 
 ![](img/Chapter_04_32.png)
 
-Chapter 4 — The Processor —
 
-# WB for Store
+### WB for Store
 
 ![](img/Chapter_04_33.png)
 
-Chapter 4 — The Processor —
 
-# Multi-Cycle Pipeline Diagram
+### Multi-Cycle Pipeline Diagram
 
 Form showing resource usage
 
 ![](img/Chapter_04_34.png)
 
-Chapter 4 — The Processor —
 
 Traditional form
 
 ![](img/Chapter_04_35.png)
 
-Chapter 4 — The Processor —
 
-# Single-Cycle Pipeline Diagram
+### Single-Cycle Pipeline Diagram
 
 State of pipeline in a given cycle
 
 ![](img/Chapter_04_36.png)
 
-Chapter 4 — The Processor —
 
-# Pipelined Control (Simplified)
+### Pipelined Control (Simplified)
 
 ![](img/Chapter_04_37.png)
 
-Chapter 4 — The Processor —
 
-# Pipelined Control
+### Pipelined Control
 
 
 
@@ -722,13 +649,11 @@ Chapter 4 — The Processor —
 
 ![](img/Chapter_04_38.png)
 
-Chapter 4 — The Processor —
 
 ![](img/Chapter_04_39.png)
 
-Chapter 4 — The Processor —
 
-# Data Hazards in ALU Instructions
+### Data Hazards in ALU Instructions
 
 
 
@@ -738,17 +663,15 @@ Chapter 4 — The Processor —
   * How do we detect when to forward?
 
 
-§4\.8 Data Hazards: Forwarding vs\. Stalling
+## §4\.8 Data Hazards: Forwarding vs\. Stalling
 
-Chapter 4 — The Processor —
 
-# Dependencies & Forwarding
+### Dependencies & Forwarding
 
 ![](img/Chapter_04_40.png)
 
-Chapter 4 — The Processor —
 
-# Detecting the Need to Forward
+### Detecting the Need to Forward
 
 
 
@@ -767,7 +690,6 @@ Fwd fromEX/MEMpipeline reg
 
 Fwd fromMEM/WBpipeline reg
 
-Chapter 4 — The Processor —
 
 
 
@@ -777,15 +699,13 @@ Chapter 4 — The Processor —
   * EX/MEM\.RegisterRd ≠ 0\,MEM/WB\.RegisterRd ≠ 0
 
 
-Chapter 4 — The Processor —
 
-# Forwarding Paths
+### Forwarding Paths
 
 ![](img/Chapter_04_41.png)
 
-Chapter 4 — The Processor —
 
-# Forwarding Conditions
+### Forwarding Conditions
 
 | Mux control | Source | Explanation |
 | :-: | :-: | :-: |
@@ -796,9 +716,8 @@ Chapter 4 — The Processor —
 | __ForwardB = 10__ | __EX/MEM__ | __The second ALU operand is forwarded from the prior ALU result\.__ |
 | __ForwardB__  __ = 01__ | __MEM/WB__ | __The second ALU operand is forwarded from data memory or an earlier ALU result\.__ |
 
-Chapter 4 — The Processor —
 
-# Double Data Hazard
+### Double Data Hazard
 
 
 
@@ -810,9 +729,8 @@ Chapter 4 — The Processor —
   * Only fwd if EX hazard condition isn’t true
 
 
-Chapter 4 — The Processor —
 
-# Revised Forwarding Condition
+### Revised Forwarding Condition
 
 
 
@@ -829,15 +747,13 @@ Chapter 4 — The Processor —
   * and \(MEM/WB\.RegisterRd = ID/EX\.RegisterRs2\)\) ForwardB = 01
 
 
-Chapter 4 — The Processor —
 
-# Datapath with Forwarding
+### Datapath with Forwarding
 
 ![](img/Chapter_04_42.png)
 
-Chapter 4 — The Processor —
 
-# Load-Use Hazard Detection
+### Load-Use Hazard Detection
 
 
 
@@ -849,9 +765,8 @@ Chapter 4 — The Processor —
 * If detected\, stall and insert bubble
 
 
-Chapter 4 — The Processor —
 
-# How to Stall the Pipeline
+### How to Stall the Pipeline
 
 
 
@@ -864,23 +779,20 @@ Chapter 4 — The Processor —
     * Can subsequently forward to EX stage
 
 
-Chapter 4 — The Processor —
 
-# Load-Use Data Hazard
+### Load-Use Data Hazard
 
 ![](img/Chapter_04_43.png)
 
 Stall inserted here
 
-Chapter 4 — The Processor —
 
-# Datapath with Hazard Detection
+### Datapath with Hazard Detection
 
 ![](img/Chapter_04_44.png)
 
-Chapter 4 — The Processor —
 
-# Stalls and Performance
+### Stalls and Performance
 
 
 
@@ -890,11 +802,10 @@ Chapter 4 — The Processor —
   * Requires knowledge of the pipeline structure
 
 
-Chapter 4 — The Processor —
 
-# Branch Hazards
+### Branch Hazards
 
-§4\.9 Control Hazards
+## §4\.9 Control Hazards
 
 If branch outcome determined in MEM
 
@@ -904,52 +815,54 @@ Flush theseinstructions
 
 \(Set controlvalues to 0\)
 
-Chapter 4 — The Processor —
 
-# Reducing Branch Delay
+### Reducing Branch Delay
 
 
 
 * Move hardware to determine outcome to ID stage
   * Target address adder
   * Register comparator
-* Example: branch taken
-  * 36:  sub  x10\, x4\, x840:  beq  x1\,  x3\, 16  // PC\-relative branch                       // to 40\+16\*2=7244:  and  x12\, x2\, x548:  orr  x13\, x2\, x652:  add  x14\, x4\, x256:  sub  x15\, x6\, x7     \.\.\.72:  ld   x4\, 50\(x7\)
+```assembly
+Example: branch taken
+  36:  sub  x10, x4, x8
+  40:  beq  x1,  x3, 16  // PC-relative branch to 40+16*2=72
+  44:  and  x12, x2, x5
+  48:  orr  x13, x2, x6
+  52:  add  x14, x4, x2
+  56:  sub  x15, x6, x7
+  ...
+  72:  ld   x4, 50(x7)
+```
 
 
-Chapter 4 — The Processor —
 
-# Example: Branch Taken
+### Example: Branch Taken
 
 ![](img/Chapter_04_46.png)
 
-Chapter 4 — The Processor —
 
 ![](img/Chapter_04_47.png)
 
-Chapter 4 — The Processor —
 
-# Data Hazards for Branches
+### Data Hazards for Branches
 
 If a comparison register is a destination of 2nd or 3rd preceding ALU instruction
 
-beq x1\, x4\, target
+`beq x1\, x4\, target`
 
 Can resolve using forwarding
 
-Chapter 4 — The Processor —
 
 
 
 * If a comparison register is a destination of preceding ALU instruction or 2nd preceding load instruction
   * Need 1 stall cycle
 
-
+```
 add x4\, $x5\, $x6
-
 beq x1\, x4\, target
-
-Chapter 4 — The Processor —
+```
 
 
 
@@ -957,11 +870,10 @@ Chapter 4 — The Processor —
   * Need 2 stall cycles
 
 
-beq x1\, x0\, target
+`beq x1\, x0\, target`
 
-Chapter 4 — The Processor —
 
-# Dynamic Branch Prediction
+### Dynamic Branch Prediction
 
 
 
@@ -976,9 +888,8 @@ Chapter 4 — The Processor —
     * If wrong\, flush pipeline and flip prediction
 
 
-Chapter 4 — The Processor —
 
-# 1-Bit Predictor: Shortcoming
+### 1-Bit Predictor: Shortcoming
 
 Inner loop branches mispredicted twice\!
 
@@ -994,17 +905,15 @@ beq …\, …\, inner       …       beq …\, …\, outer
   * Then mispredict as not taken on first iteration of inner loop next time around
 
 
-Chapter 4 — The Processor —
 
-# 2-Bit Predictor
+### 2-Bit Predictor
 
 Only change prediction on two successive mispredictions
 
 ![](img/Chapter_04_48.png)
 
-Chapter 4 — The Processor —
 
-# Calculating the Branch Target
+### Calculating the Branch Target
 
 
 
@@ -1016,11 +925,10 @@ Chapter 4 — The Processor —
     * If hit and instruction is branch predicted taken\, can fetch target immediately
 
 
-Chapter 4 — The Processor —
 
-# Exceptions and Interrupts
+### Exceptions and Interrupts
 
-§4\.10 Exceptions
+## §4\.10 Exceptions
 
 
 
@@ -1034,9 +942,8 @@ Chapter 4 — The Processor —
 * Dealing with them without sacrificing performance is hard
 
 
-Chapter 4 — The Processor —
 
-# Handling Exceptions
+### Handling Exceptions
 
 
 
@@ -1050,9 +957,8 @@ Chapter 4 — The Processor —
   * Assume at 0000 0000 1C09 0000hex
 
 
-Chapter 4 — The Processor —
 
-# An Alternate Mechanism
+### An Alternate Mechanism
 
 
 
@@ -1067,9 +973,8 @@ Chapter 4 — The Processor —
   * Jump to real handler
 
 
-Chapter 4 — The Processor —
 
-# Handler Actions
+### Handler Actions
 
 
 
@@ -1083,9 +988,8 @@ Chapter 4 — The Processor —
   * Report error using SEPC\, SCAUSE\, …
 
 
-Chapter 4 — The Processor —
 
-# Exceptions in a Pipeline
+### Exceptions in a Pipeline
 
 
 
@@ -1101,15 +1005,13 @@ Chapter 4 — The Processor —
   * Use much of the same hardware
 
 
-Chapter 4 — The Processor —
 
-# Pipeline with Exceptions
+### Pipeline with Exceptions
 
 ![](img/Chapter_04_49.png)
 
-Chapter 4 — The Processor —
 
-# Exception Properties
+### Exception Properties
 
 
 
@@ -1121,9 +1023,8 @@ Chapter 4 — The Processor —
   * Identifies causing instruction
 
 
-Chapter 4 — The Processor —
 
-# Exception Example
+### Exception Example
 
 
 
@@ -1133,17 +1034,14 @@ Chapter 4 — The Processor —
   * 1C090000	sd  x26\, 1000\(x10\)1c090004   sd  x27\, 1008\(x10\)…
 
 
-Chapter 4 — The Processor —
 
 ![](img/Chapter_04_50.png)
 
-Chapter 4 — The Processor —
 
 ![](img/Chapter_04_51.png)
 
-Chapter 4 — The Processor —
 
-# Multiple Exceptions
+### Multiple Exceptions
 
 
 
@@ -1158,9 +1056,8 @@ Chapter 4 — The Processor —
   * Maintaining precise exceptions is difficult\!
 
 
-Chapter 4 — The Processor —
 
-# Imprecise Exceptions
+### Imprecise Exceptions
 
 
 
@@ -1174,9 +1071,8 @@ Chapter 4 — The Processor —
 * Not feasible for complex multiple\-issueout\-of\-order pipelines
 
 
-Chapter 4 — The Processor —
 
-# Instruction-Level Parallelism (ILP)
+### Instruction-Level Parallelism (ILP)
 
 
 
@@ -1193,11 +1089,10 @@ Chapter 4 — The Processor —
     * But dependencies reduce this in practice
 
 
-§4\.11 Parallelism via Instructions
+## §4\.11 Parallelism via Instructions
 
-Chapter 4 — The Processor —
 
-# Multiple Issue
+### Multiple Issue
 
 
 
@@ -1211,9 +1106,8 @@ Chapter 4 — The Processor —
   * CPU resolves hazards using advanced techniques at runtime
 
 
-Chapter 4 — The Processor —
 
-# Speculation
+### Speculation
 
 
 
@@ -1230,9 +1124,8 @@ Chapter 4 — The Processor —
     * Roll back if location is updated
 
 
-Chapter 4 — The Processor —
 
-# Compiler/Hardware Speculation
+### Compiler/Hardware Speculation
 
 
 
@@ -1244,9 +1137,8 @@ Chapter 4 — The Processor —
   * Flush buffers on incorrect speculation
 
 
-Chapter 4 — The Processor —
 
-# Speculation and Exceptions
+### Speculation and Exceptions
 
 
 
@@ -1258,9 +1150,8 @@ Chapter 4 — The Processor —
   * Can buffer exceptions until instruction completion \(which may not occur\)
 
 
-Chapter 4 — The Processor —
 
-# Static Multiple Issue
+### Static Multiple Issue
 
 
 
@@ -1272,9 +1163,8 @@ Chapter 4 — The Processor —
   *  Very Long Instruction Word \(VLIW\)
 
 
-Chapter 4 — The Processor —
 
-# Scheduling Static Multiple Issue
+### Scheduling Static Multiple Issue
 
 
 
@@ -1286,9 +1176,8 @@ Chapter 4 — The Processor —
   * Pad with nop if necessary
 
 
-Chapter 4 — The Processor —
 
-# RISC-V with Static Dual Issue
+### RISC-V with Static Dual Issue
 
 
 
@@ -1309,13 +1198,11 @@ Chapter 4 — The Processor —
 | n \+ 16 | ALU/branch |  |  | IF | ID | EX | MEM | WB |
 | n \+ 20 | Load/store |  |  | IF | ID | EX | MEM | WB |
 
-Chapter 4 — The Processor —
 
 ![](img/Chapter_04_52.png)
 
-Chapter 4 — The Processor —
 
-# Hazards in the Dual-Issue RISC-V
+### Hazards in the Dual-Issue RISC-V
 
 
 
@@ -1330,9 +1217,8 @@ Chapter 4 — The Processor —
 * More aggressive scheduling required
 
 
-Chapter 4 — The Processor —
 
-# Scheduling Example
+### Scheduling Example
 
 Schedule this for dual\-issue RISC\-V
 
@@ -1350,9 +1236,8 @@ Loop: ld   x31\,0\(x20\)     // x31=array element      add   <span style="color:
   * IPC = 5/4 = 1\.25 \(c\.f\. peak IPC = 2\)
 
 
-Chapter 4 — The Processor —
 
-# Loop Unrolling
+### Loop Unrolling
 
 
 
@@ -1366,9 +1251,8 @@ Chapter 4 — The Processor —
       * Reuse of a register name
 
 
-Chapter 4 — The Processor —
 
-# Loop Unrolling Example
+### Loop Unrolling Example
 
 |  | ALU/branch | Load/store | cycle |
 | :-: | :-: | :-: | :-: |
@@ -1387,9 +1271,8 @@ Chapter 4 — The Processor —
   * Closer to 2\, but at cost of registers and code size
 
 
-Chapter 4 — The Processor —
 
-# Dynamic Multiple Issue
+### Dynamic Multiple Issue
 
 
 
@@ -1401,9 +1284,8 @@ Chapter 4 — The Processor —
   * Code semantics ensured by the CPU
 
 
-Chapter 4 — The Processor —
 
-# Dynamic Pipeline Scheduling
+### Dynamic Pipeline Scheduling
 
 
 
@@ -1414,9 +1296,8 @@ Chapter 4 — The Processor —
   * Can start sub while add is waiting for ld
 
 
-Chapter 4 — The Processor —
 
-# Dynamically Scheduled CPU
+### Dynamically Scheduled CPU
 
 Preserves dependencies
 
@@ -1430,9 +1311,8 @@ Reorders buffer for register writes
 
 Can supply operands for issued instructions
 
-Chapter 4 — The Processor —
 
-# Register Renaming
+### Register Renaming
 
 
 
@@ -1446,9 +1326,8 @@ Chapter 4 — The Processor —
     * Register update may not be required
 
 
-Chapter 4 — The Processor —
 
-# Speculation
+### Speculation
 
 
 
@@ -1463,9 +1342,8 @@ Chapter 4 — The Processor —
   * Don’t commit load until speculation cleared
 
 
-Chapter 4 — The Processor —
 
-# Why Do Dynamic Scheduling?
+### Why Do Dynamic Scheduling?
 
 
 
@@ -1477,9 +1355,8 @@ Chapter 4 — The Processor —
 * Different implementations of an ISA have different latencies and hazards
 
 
-Chapter 4 — The Processor —
 
-# Does Multiple Issue Work?
+### Does Multiple Issue Work?
 
 
 
@@ -1494,9 +1371,8 @@ Chapter 4 — The Processor —
 * Speculation can help if done well
 
 
-Chapter 4 — The Processor —
 
-# Power Efficiency
+### Power Efficiency
 
 Complexity of dynamic scheduling and speculations requires power
 
@@ -1517,9 +1393,8 @@ Multiple simpler cores may be better
 | Intel Core i9 Skylake | 2016 | 3100 MHz | 14 | 4 | Yes | 14 | 165 W |
 | Intel Ice Lake | 2018 | 4200 MHz | 14 | 4 | Yes | 16 | 185 W |
 
-Chapter 4 — The Processor —
 
-# Cortex A53 and Intel i7
+### Cortex A53 and Intel i7
 
 | Processor | ARM A53 | Intel Core i7 920 |
 | :-: | :-: | :-: |
@@ -1537,139 +1412,89 @@ Chapter 4 — The Processor —
 | 2nd level caches/core | 128\-2048 KiB | 256 KiB \(per core\) |
 | 3rd level caches \(shared\) | \(platform dependent\) | 2\-8 MB |
 
-§4\.12  Putting It All Together: The Intel Core i7 6700 and ARM Corex\-A53
+## §4\.12  Putting It All Together: The Intel Core i7 6700 and ARM Corex\-A53
 
-Chapter 4 — The Processor —
 
-# ARM Cortex-A53 Pipeline
+### ARM Cortex-A53 Pipeline
 
 ![](img/Chapter_04_54.png)
 
-Chapter 4 — The Processor —
 
-# ARM Cortex-A53 Performance
+### ARM Cortex-A53 Performance
 
 ![](img/Chapter_04_55.png)
 
-Chapter 4 — The Processor —
 
-# Core i7 Pipeline
+### Core i7 Pipeline
 
 ![](img/Chapter_04_56.png)
 
-Chapter 4 — The Processor —
 
-# Core i7 Performance
+### Core i7 Performance
 
 ![](img/Chapter_04_57.png)
 
 ![](img/Chapter_04_58.png)
 
-Chapter 4 — The Processor —
 
-# Matrix Multiply
+### Matrix Multiply
+#### Unrolled C Code
 
-Unrolled C code
+```c
+#include <x86intrin.h>
+#define UNROLL (4)
 
-1\.	\#include \<x86intrin\.h>
+void dgemm(int n, double* A, double* B, double* C) {
+  for (int i = 0; i < n; i += UNROLL * 8)
+    for (int j = 0; j < n; ++j) {
+      __m512d c[UNROLL];
+      for (int r = 0; r < UNROLL; r++)
+        c[r] = _mm512_load_pd(C + i + r * 8 + j * n);
 
-2\.	\#define UNROLL \(4\)
+      for (int k = 0; k < n; k++) {
+        __m512d bb = _mm512_broadcastsd_pd(_mm_load_sd(B + j * n + k));
+        for (int r = 0; r < UNROLL; r++)
+          c[r] = _mm512_fmadd_pd(_mm512_load_pd(A + n * k + r * 8 + i), bb, c[r]);
+      }
 
-3\.
+      for (int r = 0; r < UNROLL; r++)
+        _mm512_store_pd(C + i + r * 8 + j * n, c[r]);
+    }
+}
+```
 
-4\.	void dgemm \(int n\, double\* A\, double\* B\, double\* C\)
+#### Assembly Code
 
-5\.	\{
+```assembly
+vmovapd      (%r11), %zmm4        ### Load 8 elements of C into %zmm4
+mov          %rbx, %rcx           ### register %rcx = %rbx
+xor          %eax, %eax           ### register %eax = 0
+vmovapd      0x20(%r11), %zmm3    ### Load 8 elements of C into %zmm3
+vmovapd      0x40(%r11), %zmm2    ### Load 8 elements of C into %zmm2
+vmovapd      0x60(%r11), %zmm1    ### Load 8 elements of C into %zmm1
+vbroadcastsd (%rax, %r8, 8), %zmm0 ### Make 8 copies of B element in %zmm0
+add          $0x8, %rax           ### register %rax = %rax + 8
+vfmadd231pd  (%rcx), %zmm0, %zmm4 ### Parallel mul & add %zmm0, %zmm4
+vfmadd231pd  0x20(%rcx), %zmm0, %zmm3 ### Parallel mul & add %zmm0, %zmm3
+vfmadd231pd  0x40(%rcx), %zmm0, %zmm2 ### Parallel mul & add %zmm0, %zmm2
+vfmadd231pd  0x60(%rcx), %zmm0, %zmm1 ### Parallel mul & add %zmm0, %zmm1
+add          %r9, %rcx            ### register %rcx = %rcx
+cmp          %r10, %rax           ### compare %r10 to %rax
+jne          50 <dgemm+0x50>      ### jump if not %r10 != %rax
+add          $0x1, %esi           ### register %esi = %esi + 1
+vmovapd      %zmm4, (%r11)        ### Store %zmm4 into 8 C elements
+vmovapd      %zmm3, 0x20(%r11)    ### Store %zmm3 into 8 C elements
+vmovapd      %zmm2, 0x40(%r11)    ### Store %zmm2 into 8 C elements
+vmovapd      %zmm1, 0x60(%r11)    ### Store %zmm1 into 8 C elements
+```
 
-6\.	  for \(int i = 0; i < n; i\+=UNROLL\*8\)
 
-7\.	    for \(int j = 0; j < n; \+\+j\)\{
-
-8\.	      \_\_m512d c\[UNROLL\];
-
-9\.	      for \(int r=0;r<UNROLL;r\+\+\)
-
-10\.	        c\[r\] =  \_mm512\_load\_pd\(C\+i\+r\*8\+j\*n\); //\[ UNROLL\];
-
-11\.
-
-12\.	      for\( int k = 0; k < n; k\+\+ \)
-
-13\.	      \{
-
-14\.	        \_\_m512d bb = \_mm512\_broadcastsd\_pd\(\_mm\_load\_sd\(B\+j\*n\+k\)\);
-
-15\.	        for \(int r=0;r<UNROLL;r\+\+\)
-
-16\.	          c\[r\] = \_mm512\_fmadd\_pd\(\_mm512\_load\_pd\(A\+n\*k\+r\*8\+i\)\, bb\, c\[r\]\);
-
-17\.	     \}
-
-18\.
-
-19\.	     for \(int r=0;r<UNROLL;r\+\+\)
-
-20\.	       \_mm512\_store\_pd\(C\+i\+r\*8\+j\*n\, c\[r\]\);
-
-21\.	     \}
-
-22\.	  \}
-
-§4\.13 Going Faster: Instruction\-Level Parallelism and Matrix Multiply
-
-Chapter 4 — The Processor —
-
-Assembly code:
-
-vmovapd      \(%r11\)\,%zmm4		\# Load 8 elements of C into %zmm4
-
-mov          %rbx\,%rcx		\# register %rcx = %rbx
-
-xor          %eax\,%eax		\# register %eax = 0
-
-vmovapd      0x20\(%r11\)\,%zmm3		\# Load 8 elements of C into %zmm3
-
-vmovapd      0x40\(%r11\)\,%zmm2		\# Load 8 elements of C into %zmm2
-
-vmovapd      0x60\(%r11\)\,%zmm1		\# Load 8 elements of C into %zmm1
-
-vbroadcastsd \(%rax\,%r8\,8\)\,%zmm0 	\# Make 8 copies of B element in %zmm0
-
-add          $0x8\,%rax		\# register %rax = %rax \+ 8
-
-vfmadd231pd  \(%rcx\)\,%zmm0\,%zmm4	\# Parallel mul & add %zmm0\, %zmm4
-
-vfmadd231pd  0x20\(%rcx\)\,%zmm0\,%zmm3	\# Parallel mul & add %zmm0\, %zmm3
-
-vfmadd231pd  0x40\(%rcx\)\,%zmm0\,%zmm2	\# Parallel mul & add %zmm0\, %zmm2
-
-vfmadd231pd  0x60\(%rcx\)\,%zmm0\,%zmm1	\# Parallel mul & add %zmm0\, %zmm1
-
-add          %r9\,%rcx		\# register %rcx = %rcx
-
-cmp          %r10\,%rax		\# compare %r10 to %rax
-
-jne          50 \<dgemm\+0x50>		\# jump if not %r10 \!= %rax
-
-add          $0x1\, %esi		\# register % esi = % esi \+ 1
-
-vmovapd      %zmm4\, \(%r11\)		\# Store %zmm4 into 8 C elements
-
-vmovapd      %zmm3\, 0x20\(%r11\)	\# Store %zmm3 into 8 C elements
-
-vmovapd      %zmm2\, 0x40\(%r11\)	\# Store %zmm2 into 8 C elements
-
-vmovapd      %zmm1\, 0x60\(%r11\)	\# Store %zmm1 into 8 C elements
-
-Chapter 4 — The Processor —
-
-# Performance Impact
+### Performance Impact
 
 ![](img/Chapter_04_59.png)
 
-Chapter 4 — The Processor —
 
-# Fallacies
+### Fallacies
 
 
 
@@ -1684,11 +1509,10 @@ Chapter 4 — The Processor —
     * e\.g\.\, predicated instructions
 
 
-§4\.15 Fallacies and Pitfalls
+## §4\.15 Fallacies and Pitfalls
 
-Chapter 4 — The Processor —
 
-# Pitfalls
+### Pitfalls
 
 
 
@@ -1702,9 +1526,8 @@ Chapter 4 — The Processor —
     * Advanced pipelines have long delay slots
 
 
-Chapter 4 — The Processor —
 
-# Concluding Remarks
+### Concluding Remarks
 
 
 
@@ -1719,7 +1542,6 @@ Chapter 4 — The Processor —
   * Complexity leads to the power wall
 
 
-§4\.16 Concluding Remarks
+## §4\.16 Concluding Remarks
 
-Chapter 4 — The Processor —
 
