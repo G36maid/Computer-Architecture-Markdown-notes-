@@ -1220,22 +1220,23 @@ Only change prediction on two successive mispredictions
 
 ### Scheduling Example
 
-Schedule this for dual\-issue RISC\-V
-
-Loop: ld   x31\,0\(x20\)     // x31=array element      add   <span style="color:#009900">x31</span> \,x31\,x21    // add scalar in x21      sd    <span style="color:#009900">x31</span> \,0\(x20\)     // store result      addi  <span style="color:#a47b38">x20</span> \,x20\,\-8     // decrement pointer      blt  x22\, <span style="color:#a47b38">x20</span> \,Loop   // branch if x22 < x20
+```assembly
+Loop: 
+  ld   x31, 0(x20)     // x31 = array element
+  add  x31, x31, x21   // add scalar in x21
+  sd   x31, 0(x20)     // store result
+  addi x20, x20, -8    // decrement pointer
+  blt  x22, x20, Loop  // branch if x22 < x20
+```
 
 |  | ALU/branch | Load/store | cycle |
 | :-: | :-: | :-: | :-: |
-| Loop: | <span style="color:#c0c0c0">nop</span> | ld  x31\,0\(x20\) | 1 |
-|  | addi  <span style="color:#a47b38">x20</span> \,x20\,\-8 | <span style="color:#c0c0c0">nop</span> | 2 |
-|  | add   <span style="color:#009900">x31</span> \,x31\,x21 | <span style="color:#c0c0c0">nop</span> | 3 |
-|  | blt  x22\, <span style="color:#a47b38">x20</span> \,Loop | sd   <span style="color:#009900">x31</span> \, <span style="color:#ff0000">8</span> \(x20\) | 4 |
+| Loop: | <span style="color:#c0c0c0">nop</span> | ld  x31, 0(x20) | 1 |
+|  | addi  x20, x20, -8 | <span style="color:#c0c0c0">nop</span> | 2 |
+|  | add   x31, x31, x21 | <span style="color:#c0c0c0">nop</span> | 3 |
+|  | blt  x22, x20, Loop | sd   x31, 8(x20) | 4 |
 
-
-
-  * IPC = 5/4 = 1\.25 \(c\.f\. peak IPC = 2\)
-
-
+- IPC = 5/4 = 1.25 (c.f. peak IPC = 2)
 
 ### Loop Unrolling
 
